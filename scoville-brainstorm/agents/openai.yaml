@@ -1,4 +1,4 @@
 interface:
   display_name: "Scoville Brainstorm"
-  short_description: "Explore distinct solution mechanisms before choosing."
+  short_description: "Different mechanisms before one answer wins too early"
   default_prompt: "Use $scoville-brainstorm to explore materially different solution directions, compare bounded prior art, and stop at a decision point."

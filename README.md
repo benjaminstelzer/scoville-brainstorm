@@ -1,12 +1,13 @@
 # Scoville Brainstorm
 
-Broaden the mechanism space before committing to one answer.
+More ideas are easy. More genuinely different mechanisms are not.
 
 Scoville Brainstorm is a read-only Agent Skill for material architecture,
 product, workflow, research, and unknown-root choices. It explores causally
-different mechanisms, checks them against fixed constraints and bounded prior
-art, and returns a decision-ready shortlist. It stops before selection,
-implementation, durable planning, or publication.
+different mechanisms, tests them against fixed constraints and bounded prior
+art, and returns a decision-ready shortlist. Then it stops. Selection,
+implementation, durable planning, and publication belong to the work that
+comes after brainstorming, however eager the brainstorm may be to get promoted.
 
 Do not use it for one canonical answer, a known-root fix, ordinary review or
 wording, or one small reversible change.
