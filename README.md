@@ -2,6 +2,20 @@
 
 More ideas are easy. More genuinely different mechanisms are not.
 
+It usually looks harmless:
+
+- You ask for three different architectures and receive a queue, a queue with
+  events, and a queue whose arrows point the other way.
+- One direction ignores the fixed offline constraint but survives because it
+  is, admittedly, the exciting one.
+- A familiar pattern is presented as original after the prior-art search stops
+  precisely where recognition begins.
+- The eighth idea exists because eight ideas were requested. Its main mechanism
+  is being number eight.
+
+That is brainstorming slop: surface variety without causal variety. Plenty of
+ideas, very little new decision space.
+
 Scoville Brainstorm is a read-only Agent Skill for material architecture,
 product, workflow, research, and unknown-root choices. It explores causally
 different mechanisms, tests them against fixed constraints and bounded prior
