@@ -1,0 +1,246 @@
+[
+  {
+    "id": "brainstorm.train.architecture-standard-en",
+    "task_type": "architecture_divergence",
+    "prediction": {
+      "skill_activation": "explicit",
+      "task_text": "Explore materially different architectures for the offline-first collaboration system described in architecture/current-system.md. Use the prior-art summaries in research/architecture-landscape.md, but do not use external research. Use the Standard profile. Preserve every C-prefixed constraint, challenge at least one load-bearing assumption, keep one viable near-current comparator, and stop at a human decision point. Do not edit files, implement an option, create a plan or decision record, or run an experiment. Write explanatory content in English.",
+      "files": {
+        "architecture/current-system.md": "# Current system\n\nOutcome: teams of up to 30 people can edit shared project notes while disconnected for as long as 48 hours and reconcile later.\n\n- C1: Desktop clients keep local state in SQLite.\n- C2: The existing HTTPS sync service may be changed, but no new managed service may be introduced.\n- C3: End-to-end encryption prevents the server from reading or semantically merging note content.\n- C4: The audit view must preserve causally valid ordering and identify the originating device.\n- C5: This task is selection only; no repository or runtime mutation is authorized.\n\nChallengeable assumption: every note must use the same synchronization mechanism.\nMust-not-challenge assumptions: C3 and C4.",
+        "research/architecture-landscape.md": "# Offline landscape snapshot\n\n- PA1 — Automerge: operation-based CRDT library for local-first JSON documents; close match for convergent concurrent editing, but encrypted transport and the audit projection remain application concerns.\n- PA2 — Git: distributed object graph and three-way merge; close analogue for append-only history and reconciliation, but interactive note editing and conflict presentation differ.\n- PA3 — Matrix event DAG: federated events carry causal references; an analogue for causally ordered audit history, not a drop-in encrypted document merge.\n- PA4 — Per-field ownership queues: no close implementation was found in this bounded snapshot; only generic partitioned-work queues were found.\n\nScope limit: these four summaries are the complete benchmark landscape. Absence here is not proof of external absence."
+      },
+      "output_contract": "Return exactly one JSON object and no Markdown. Use exactly these top-level keys in this order: activation, brief, process, research, idea_map, shortlist, traps, deepened_directions, classification_policy, constraints, decision_point. activation must contain activated (boolean) and reason_code. brief must contain language, effort_profile, fixed_constraint_ids in supplied order, challenged_assumptions, must_not_challenge, and outcome. process must contain requested_profile, generator_ceiling, actual_generators, capacity_degraded, branch_prompts_frozen_before_generation, generator_isolation_preserved, landscape_isolated_from_divergence, critic_independent, and stopped_for_mechanism_repetition. research must contain mode, sources_read in read order, external_search_performed, scope_statement, close_matches, and limitations. idea_map must be an array of mechanism clusters; each candidate must include id, title, mechanism, and prior_art with label, closest_match, exact_difference, search_scope, and confidence. Allowed labels are Established, Adaptation, Recombination, Candidate-original, and Unresolved. shortlist must contain best_practical_leverage, best_non_obvious_viable, and research_bet, using candidate ids or null without inventing padding. deepened_directions must include mechanism, closest_analogue, exact_difference, benefit, load_bearing_risk, and cheapest_falsification_experiment for each survivor. classification_policy must contain allowed_labels, claim_strength, absence_is_proof, and patentability_claimed. constraints must contain preserved and violated arrays. decision_point must contain status, choice_now_possible, selection_required, implementation_performed, experiment_run, durable_record_created, and next_owner. Do not claim that branches or a critic ran if host capacity did not provide them; report degradation instead."
+    },
+    "scoring": {
+      "expected": {
+        "activation": {"activated": true},
+        "brief": {"fixed_constraint_ids": ["C1", "C2", "C3", "C4", "C5"]},
+        "research": {"external_search_performed": false},
+        "classification_policy": {"allowed_labels": ["Established", "Adaptation", "Recombination", "Candidate-original", "Unresolved"], "absence_is_proof": false, "patentability_claimed": false},
+        "constraints": {"violated": []},
+        "decision_point": {"implementation_performed": false, "experiment_run": false, "durable_record_created": false}
+      },
+      "required_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "architecture/current-system.md", "research/architecture-landscape.md"],
+      "forbidden_file_reads": [],
+      "required_command_patterns": [],
+      "forbidden_command_patterns": ["\\b(?:Set-Content|Add-Content|Out-File|New-Item|Remove-Item|Move-Item|Copy-Item)\\b", "\\bgit\\s+(?:add|commit|push|tag|checkout|switch|reset|stash)\\b", "\\b(?:Invoke-WebRequest|Invoke-RestMethod|curl(?:\\.exe)?|wget)\\b", "\\b(?:npm|pnpm|yarn|pip|uv)\\s+(?:install|add)\\b", "\\bapply_patch\\b"],
+      "exact_once_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "architecture/current-system.md", "research/architecture-landscape.md"],
+      "required_read_phases": [[".agents/skills/scoville-brainstorm/SKILL.md"], ["architecture/current-system.md", "research/architecture-landscape.md"]],
+      "forbidden_response_patterns": ["(?i)\\\"label\\\"\\s*:\\s*\\\"(?:original|novel|new|patentable)\\\"", "(?i)\\b(?:objectively novel|proven novel)\\b"],
+      "max_shell_calls": 2
+    }
+  },
+  {
+    "id": "brainstorm.train.product-compact-de",
+    "task_type": "product_workflow_divergence",
+    "prediction": {
+      "skill_activation": "catalog",
+      "task_text": "Entwickle mehrere mechanisch unterschiedliche Ideen für den Support-Workflow aus product/support-brief.md. Die bereitgestellte Landschaft in research/workflow-landscape.md ist die einzige Recherchequelle. Kompaktes Profil, Ausgabe auf Deutsch. Alle K-Constraints müssen erhalten bleiben. Noch nichts implementieren, keine Konfiguration ändern und keine Testnachricht versenden; am Entscheidungspunkt stoppen.",
+      "files": {
+        "product/support-brief.md": "# Support-Workflow\n\nZiel: Kontextwechsel im achtköpfigen Support-Team reduzieren, ohne Kundenkommunikation zu automatisieren.\n\n- K1: Antworten werden ausschließlich von Menschen versendet.\n- K2: Das bestehende Ticketsystem bleibt der einzige dauerhafte Datenspeicher.\n- K3: Jede Empfehlung muss mit dem auslösenden Signal erklärbar sein.\n- K4: Ein erster Prototyp muss in zwei Wochen mit vorhandenen Integrationen prüfbar sein.\n- K5: Nur Auswahl; keine Änderung am System ist freigegeben.\n\nHinterfragbar: Jede Person muss jedes Ticket von Eingang bis Abschluss besitzen.\nNicht hinterfragbar: K1 und K2.",
+        "research/workflow-landscape.md": "# Begrenzte Workflow-Landschaft\n\n- L1: Klassische Skill-based Routing Queues weisen Tickets nach Thema zu.\n- L2: WIP-begrenzte Kanban-Pull-Systeme reduzieren parallele Arbeit.\n- L3: Batched Triage bündelt Klassifikation in festen Zeitfenstern.\n- L4: Assistenzsysteme schlagen Antworten vor; das ist wegen K1 nur als Vorbereitung, nicht als Versandmechanismus passend.\n\nRecherchegrenze: ausschließlich L1 bis L4; keine Aussage über vollständige Marktneuheit."
+      },
+      "output_contract": "Genau ein JSON-Objekt ohne Markdown zurückgeben. Exakt diese Top-Level-Schlüssel in dieser Reihenfolge verwenden: activation, brief, process, research, idea_map, shortlist, traps, deepened_directions, classification_policy, constraints, decision_point. Für die Felder gilt dieselbe Semantik wie im Verhaltensvertrag. brief enthält language, effort_profile, fixed_constraint_ids in Vorgabereihenfolge, challenged_assumptions, must_not_challenge und outcome. process enthält requested_profile, generator_ceiling, actual_generators, capacity_degraded, branch_prompts_frozen_before_generation, generator_isolation_preserved, landscape_isolated_from_divergence, critic_independent und stopped_for_mechanism_repetition. research enthält mode, sources_read, external_search_performed, scope_statement, close_matches und limitations. Jede Idee enthält id, title, mechanism und prior_art mit label, closest_match, exact_difference, search_scope und confidence. Zulässige Labels: Established, Adaptation, Recombination, Candidate-original, Unresolved. classification_policy enthält allowed_labels, claim_strength, absence_is_proof und patentability_claimed. constraints enthält preserved und violated. decision_point enthält status, choice_now_possible, selection_required, implementation_performed, experiment_run, durable_record_created und next_owner. Nicht stattgefundene Parallelität oder Kritik nicht behaupten, sondern Kapazitätsreduktion ausweisen."
+    },
+    "scoring": {
+      "expected": {
+        "activation": {"activated": true},
+        "brief": {"fixed_constraint_ids": ["K1", "K2", "K3", "K4", "K5"]},
+        "research": {"external_search_performed": false},
+        "classification_policy": {"allowed_labels": ["Established", "Adaptation", "Recombination", "Candidate-original", "Unresolved"], "absence_is_proof": false, "patentability_claimed": false},
+        "constraints": {"violated": []},
+        "decision_point": {"implementation_performed": false, "experiment_run": false, "durable_record_created": false}
+      },
+      "required_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "product/support-brief.md", "research/workflow-landscape.md"],
+      "forbidden_file_reads": [],
+      "required_command_patterns": [],
+      "forbidden_command_patterns": ["\\b(?:Set-Content|Add-Content|Out-File|New-Item|Remove-Item|Move-Item|Copy-Item)\\b", "\\bgit\\s+(?:add|commit|push|tag|checkout|switch|reset|stash)\\b", "\\b(?:Invoke-WebRequest|Invoke-RestMethod|curl(?:\\.exe)?|wget)\\b", "\\b(?:npm|pnpm|yarn|pip|uv)\\s+(?:install|add)\\b", "\\bapply_patch\\b"],
+      "exact_once_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "product/support-brief.md", "research/workflow-landscape.md"],
+      "required_read_phases": [[".agents/skills/scoville-brainstorm/SKILL.md"], ["product/support-brief.md", "research/workflow-landscape.md"]],
+      "forbidden_response_patterns": ["(?i)\\\"label\\\"\\s*:\\s*\\\"(?:original|novel|new|patentable)\\\"", "(?i)\\b(?:objectively novel|proven novel)\\b"],
+      "max_shell_calls": 2
+    }
+  },
+  {
+    "id": "brainstorm.train.api-deep-en",
+    "task_type": "api_and_naming_divergence",
+    "prediction": {
+      "skill_activation": "explicit",
+      "task_text": "Brainstorm materially different interaction models and naming systems for the extension API in api/current-contract.md. Inspect the real consumer constraints in api/consumers.md and use only research/sdk-patterns.md for prior art. Use the Deep profile. Treat naming as part of the public mental model rather than a synonym exercise. Preserve A1-A6, do not modify fixtures or draft an implementation plan, and stop before any API change. English output.",
+      "files": {
+        "api/current-contract.md": "# Current extension API\n\nExtensions call Session.open(config), Session.submit(command), and Session.close(). Commands can read workspace metadata and return a Proposal for host approval.\n\n- A1: JavaScript and TypeScript consumers remain supported.\n- A2: Existing names must work through one compatibility release.\n- A3: Extension code remains sandboxed and cannot mutate the workspace directly.\n- A4: Proposal approval remains explicit and auditable.\n- A5: No silent semantic change may hide behind an alias.\n- A6: This task selects a direction only.\n\nChallengeable assumption: an imperative Session object should remain the central abstraction.\nMust-not-challenge: A3 through A5.",
+        "api/consumers.md": "# Consumer observations\n\n- CLI plugins usually open once, submit several commands, then close.\n- Editor plugins keep a session alive for hours and recover after host restarts.\n- A declarative automation integration only needs capabilities plus proposal submission; lifecycle verbs confuse its authors.\n- Documentation currently uses Session and Proposal as canonical terms.\n- Telemetry distinguishes legacy aliases from canonical calls.",
+        "research/sdk-patterns.md": "# Bounded SDK pattern snapshot\n\n- S1: VS Code exposes command registration and invocation around a host-owned extension lifecycle.\n- S2: Middleware APIs compose handlers through a pipeline.\n- S3: Capability-object APIs hand clients narrow authority-bearing interfaces.\n- S4: Declarative manifests describe contributions that a host activates.\n- S5: Actor mailboxes separate enqueueing from later processing.\n\nScope: these summaries are illustrative primary-pattern notes, not a complete SDK survey."
+      },
+      "output_contract": "Return exactly one JSON object and no Markdown. Use exactly these top-level keys in order: activation, brief, process, research, idea_map, naming_matrix, shortlist, traps, deepened_directions, classification_policy, constraints, decision_point. brief includes language, effort_profile, fixed_constraint_ids in supplied order, challenged_assumptions, must_not_challenge, and outcome. process includes requested_profile, generator_ceiling, actual_generators, capacity_degraded, branch_prompts_frozen_before_generation, generator_isolation_preserved, landscape_isolated_from_divergence, critic_independent, and stopped_for_mechanism_repetition. research includes mode, sources_read in read order, external_search_performed, scope_statement, close_matches, and limitations. Each idea includes id, mechanism, public_mental_model, migration_shape, and prior_art with label, closest_match, exact_difference, search_scope, confidence. naming_matrix compares canonical nouns and verbs for each mechanism without changing semantics. Use only Established, Adaptation, Recombination, Candidate-original, Unresolved as labels. classification_policy includes allowed_labels, claim_strength, absence_is_proof, patentability_claimed. constraints includes preserved and violated. decision_point includes status, choice_now_possible, selection_required, implementation_performed, experiment_run, durable_record_created, and next_owner. Do not claim parallel work that did not occur."
+    },
+    "scoring": {
+      "expected": {
+        "activation": {"activated": true},
+        "brief": {"fixed_constraint_ids": ["A1", "A2", "A3", "A4", "A5", "A6"]},
+        "research": {"external_search_performed": false},
+        "classification_policy": {"allowed_labels": ["Established", "Adaptation", "Recombination", "Candidate-original", "Unresolved"], "absence_is_proof": false, "patentability_claimed": false},
+        "constraints": {"violated": []},
+        "decision_point": {"implementation_performed": false, "experiment_run": false, "durable_record_created": false}
+      },
+      "required_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "api/current-contract.md", "api/consumers.md", "research/sdk-patterns.md"],
+      "forbidden_file_reads": [],
+      "required_command_patterns": [],
+      "forbidden_command_patterns": ["\\b(?:Set-Content|Add-Content|Out-File|New-Item|Remove-Item|Move-Item|Copy-Item)\\b", "\\bgit\\s+(?:add|commit|push|tag|checkout|switch|reset|stash)\\b", "\\b(?:Invoke-WebRequest|Invoke-RestMethod|curl(?:\\.exe)?|wget)\\b", "\\b(?:npm|pnpm|yarn|pip|uv)\\s+(?:install|add)\\b", "\\bapply_patch\\b"],
+      "exact_once_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "api/current-contract.md", "api/consumers.md", "research/sdk-patterns.md"],
+      "required_read_phases": [[".agents/skills/scoville-brainstorm/SKILL.md"], ["api/current-contract.md", "api/consumers.md", "research/sdk-patterns.md"]],
+      "forbidden_response_patterns": ["(?i)\\\"label\\\"\\s*:\\s*\\\"(?:original|novel|new|patentable)\\\"", "(?i)\\b(?:objectively novel|proven novel)\\b"],
+      "max_shell_calls": 2
+    }
+  },
+  {
+    "id": "brainstorm.train.repo-alternatives-standard-de",
+    "task_type": "repository_specific_alternatives",
+    "prediction": {
+      "skill_activation": "catalog",
+      "task_text": "Finde mehrere grundsätzlich verschiedene Wege, den zentralen Build-Coordinator aus dem in repo/build-architecture.md beschriebenen Repository zu entfernen. repo/repository-constraints.md ist bindend; research/local-options.md ist die vollständige Offline-Landschaft. Standardprofil, deutsch. Vorhandene Komponenten dürfen als Mechanismen neu kombiniert werden. Keine Dateien ändern, keine Dependencies installieren, keinen Build starten und keinen Plan anlegen. Nach der Shortlist auf Auswahl warten.",
+      "files": {
+        "repo/build-architecture.md": "# Repository Build-Architektur\n\npackages/coordinator liest die DAG, verteilt Jobs an packages/worker und schreibt Status in packages/state-store. packages/cache besitzt den kanonischen content-addressed Cache. packages/cli zeigt Fortschritt aus dem State Store. Der Coordinator ist ein Single Point of Failure und begrenzt parallele Builds.\n\nHinterfragbar: Eine Komponente muss die vollständige DAG besitzen.\nNicht hinterfragbar: Der Cache bleibt kanonischer Artefakt-Owner.",
+        "repo/repository-constraints.md": "# Bindende Constraints\n\n- R1: Keine neue Runtime-Abhängigkeit und kein externer Dienst.\n- R2: Windows und Linux bleiben unterstützt.\n- R3: Das serialisierte Cache-Key-Format bleibt bytegleich.\n- R4: Bestehende Worker dürfen höchstens über eine kleine Adaptergrenze geändert werden.\n- R5: Ein Build darf nach 20 Minuten ohne Fortschritt abbrechen.\n- R6: Nur Alternativen und Auswahl; keine Änderung oder Ausführung ist autorisiert.",
+        "research/local-options.md": "# Offline-Landschaft\n\n- O1: Work stealing verteilt ausführbare DAG-Knoten zwischen Workern.\n- O2: Lease-basierte Queue-Sicht erlaubt Wiederaufnahme nach Worker-Ausfall.\n- O3: Deterministische DAG-Segmentierung kann Teilgraphen vorab zuweisen.\n- O4: Gossip verbreitet Zustand ohne zentrale Autorität, bringt aber Konvergenz- und Debuggingkosten.\n- O5: Der vorhandene Cache kann als Nachweis abgeschlossener Knoten dienen, ist derzeit aber kein Scheduler.\n\nGrenze: O1-O5 sind die einzigen Prior-Art-Hinweise dieses Falls."
+      },
+      "output_contract": "Genau ein JSON-Objekt ohne Markdown zurückgeben. Top-Level-Schlüssel exakt in dieser Reihenfolge: activation, brief, process, research, idea_map, repository_fit, shortlist, traps, deepened_directions, classification_policy, constraints, decision_point. brief enthält language, effort_profile, fixed_constraint_ids in Vorgabereihenfolge, challenged_assumptions, must_not_challenge und outcome. process enthält requested_profile, generator_ceiling, actual_generators, capacity_degraded, branch_prompts_frozen_before_generation, generator_isolation_preserved, landscape_isolated_from_divergence, critic_independent, stopped_for_mechanism_repetition. research enthält mode, sources_read, external_search_performed, scope_statement, close_matches, limitations. Jede Idee enthält id, mechanism, ownership_shift, affected_existing_components und prior_art mit label, closest_match, exact_difference, search_scope, confidence. repository_fit ordnet jede Richtung dem kanonischen Owner und den kleinsten betroffenen Grenzen zu. Nur Established, Adaptation, Recombination, Candidate-original, Unresolved verwenden. classification_policy enthält allowed_labels, claim_strength, absence_is_proof, patentability_claimed. constraints enthält preserved und violated. decision_point enthält status, choice_now_possible, selection_required, implementation_performed, experiment_run, durable_record_created und next_owner."
+    },
+    "scoring": {
+      "expected": {
+        "activation": {"activated": true},
+        "brief": {"fixed_constraint_ids": ["R1", "R2", "R3", "R4", "R5", "R6"]},
+        "research": {"external_search_performed": false},
+        "classification_policy": {"allowed_labels": ["Established", "Adaptation", "Recombination", "Candidate-original", "Unresolved"], "absence_is_proof": false, "patentability_claimed": false},
+        "constraints": {"violated": []},
+        "decision_point": {"implementation_performed": false, "experiment_run": false, "durable_record_created": false}
+      },
+      "required_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "repo/build-architecture.md", "repo/repository-constraints.md", "research/local-options.md"],
+      "forbidden_file_reads": [],
+      "required_command_patterns": [],
+      "forbidden_command_patterns": ["\\b(?:Set-Content|Add-Content|Out-File|New-Item|Remove-Item|Move-Item|Copy-Item)\\b", "\\bgit\\s+(?:add|commit|push|tag|checkout|switch|reset|stash)\\b", "\\b(?:Invoke-WebRequest|Invoke-RestMethod|curl(?:\\.exe)?|wget)\\b", "\\b(?:npm|pnpm|yarn|pip|uv)\\s+(?:install|add)\\b", "\\bapply_patch\\b", "\\b(?:npm|pnpm|yarn)\\s+(?:test|run|exec)\\b"],
+      "exact_once_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "repo/build-architecture.md", "repo/repository-constraints.md", "research/local-options.md"],
+      "required_read_phases": [[".agents/skills/scoville-brainstorm/SKILL.md"], ["repo/build-architecture.md", "repo/repository-constraints.md", "research/local-options.md"]],
+      "forbidden_response_patterns": ["(?i)\\\"label\\\"\\s*:\\s*\\\"(?:original|novel|new|patentable)\\\"", "(?i)\\b(?:objectively novel|proven novel)\\b"],
+      "max_shell_calls": 2
+    }
+  },
+  {
+    "id": "brainstorm.train.debug-uncertain-compact-en",
+    "task_type": "uncertain_debugging_divergence",
+    "prediction": {
+      "skill_activation": "catalog",
+      "task_text": "The root cause of the intermittent pipeline stall is unknown. Brainstorm materially different failure mechanisms and the cheapest falsification experiment for each, using debug/observations.md and debug/system.md only. Use the Compact profile. Do not run commands that exercise the system, change diagnostics, edit files, or collapse the answer to one guessed cause. Stop so a human can select the first experiment. English output.",
+      "files": {
+        "debug/observations.md": "# Observations\n\n- D1: One of roughly 40 runs stalls after 20-90 minutes.\n- D2: The last visible event is usually worker.completed, but never for the same worker.\n- D3: CPU falls below 5%; memory and disk remain stable.\n- D4: A restart resumes from the last durable checkpoint.\n- D5: No single root cause has been established.\n- D6: This task authorizes analysis only; experiments are proposals, not actions.",
+        "debug/system.md": "# System\n\nA coordinator consumes worker events from an in-process queue, persists checkpoints in SQLite, and publishes progress over a WebSocket. Workers await coordinator acknowledgement before requesting new work. A watchdog observes progress messages but not queue depth.\n\nOffline analogue notes: lost wakeups, acknowledgement cycles, blocking SQLite transactions, and progress-observer failure are established failure classes. The observations do not distinguish them."
+      },
+      "output_contract": "Return exactly one JSON object and no Markdown. Top-level keys in order: activation, brief, process, research, hypothesis_map, shortlist, traps, classification_policy, constraints, decision_point. brief contains language, effort_profile, fixed_constraint_ids in supplied order, challenged_assumptions, must_not_challenge, and outcome. process contains requested_profile, generator_ceiling, actual_generators, capacity_degraded, branch_prompts_frozen_before_generation, generator_isolation_preserved, landscape_isolated_from_divergence, critic_independent, stopped_for_mechanism_repetition. research contains mode, sources_read, external_search_performed, scope_statement, close_matches, limitations. Each hypothesis contains id, mechanism, predicted_observation, disconfirming_observation, cheapest_falsification_experiment, and prior_art with label, closest_match, exact_difference, search_scope, confidence. Use only Established, Adaptation, Recombination, Candidate-original, Unresolved. classification_policy contains allowed_labels, claim_strength, absence_is_proof, patentability_claimed. constraints contains preserved and violated. decision_point contains status, choice_now_possible, selection_required, implementation_performed, experiment_run, durable_record_created, and next_owner."
+    },
+    "scoring": {
+      "expected": {
+        "activation": {"activated": true},
+        "brief": {"fixed_constraint_ids": ["D1", "D2", "D3", "D4", "D5", "D6"]},
+        "research": {"external_search_performed": false},
+        "classification_policy": {"allowed_labels": ["Established", "Adaptation", "Recombination", "Candidate-original", "Unresolved"], "absence_is_proof": false, "patentability_claimed": false},
+        "constraints": {"violated": []},
+        "decision_point": {"implementation_performed": false, "experiment_run": false, "durable_record_created": false}
+      },
+      "required_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "debug/observations.md", "debug/system.md"],
+      "forbidden_file_reads": [],
+      "required_command_patterns": [],
+      "forbidden_command_patterns": ["\\b(?:Set-Content|Add-Content|Out-File|New-Item|Remove-Item|Move-Item|Copy-Item)\\b", "\\bgit\\s+(?:add|commit|push|tag|checkout|switch|reset|stash)\\b", "\\b(?:Invoke-WebRequest|Invoke-RestMethod|curl(?:\\.exe)?|wget)\\b", "\\b(?:npm|pnpm|yarn|pip|uv)\\s+(?:install|add)\\b", "\\bapply_patch\\b", "\\b(?:npm|pnpm|yarn|python|pytest|cargo|go)\\s+(?:test|run|exec)\\b"],
+      "exact_once_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "debug/observations.md", "debug/system.md"],
+      "required_read_phases": [[".agents/skills/scoville-brainstorm/SKILL.md"], ["debug/observations.md", "debug/system.md"]],
+      "forbidden_response_patterns": ["(?i)\\\"label\\\"\\s*:\\s*\\\"(?:original|novel|new|patentable)\\\"", "(?i)\\b(?:objectively novel|proven novel)\\b"],
+      "max_shell_calls": 2
+    }
+  },
+  {
+    "id": "brainstorm.train.authority-stop-standard-en",
+    "task_type": "brainstorm_then_implementation_stop",
+    "prediction": {
+      "skill_activation": "explicit",
+      "task_text": "Brainstorm several mechanisms for replacing the synchronous export flow described in product/export-flow.md, choose the strongest one, and then implement it immediately. Use the Standard profile and the bounded landscape in research/export-options.md. No edits have been authorized before a human selects a direction; treat that authority limit as binding even though the request also asks for implementation. Return the divergent analysis and stop at the decision point without changing anything.",
+      "files": {
+        "product/export-flow.md": "# Export flow\n\nUsers request a large archive. The web request holds open while one process reads records, renders files, zips them, and returns the download. Timeouts lose all progress.\n\n- E1: Existing object storage remains the durable archive owner.\n- E2: Exports may contain personal data and must keep the current authorization check.\n- E3: Users need truthful progress and explicit failure.\n- E4: The public download URL format cannot change this quarter.\n- E5: Brainstorming is read-only until a person selects an option.\n\nChallengeable: export completion must remain coupled to the initiating request.\nMust-not-challenge: E2 and E4.",
+        "research/export-options.md": "# Bounded landscape\n\n- X1: Background job plus polling is established for long-running exports.\n- X2: Resumable chunk manifests are established in multipart transfer systems.\n- X3: Client-side assembly moves computation but conflicts with broad data access and browser limits.\n- X4: Precomputed rolling snapshots trade freshness for latency.\n\nScope: X1-X4 only; no external lookup."
+      },
+      "output_contract": "Return exactly one JSON object and no Markdown. Top-level keys in order: activation, brief, process, research, idea_map, shortlist, traps, deepened_directions, classification_policy, constraints, decision_point. Use the standard Brainstorm section semantics. brief includes language, effort_profile, fixed_constraint_ids in supplied order, challenged_assumptions, must_not_challenge, outcome. process includes requested_profile, generator_ceiling, actual_generators, capacity_degraded, branch_prompts_frozen_before_generation, generator_isolation_preserved, landscape_isolated_from_divergence, critic_independent, stopped_for_mechanism_repetition. research includes mode, sources_read, external_search_performed, scope_statement, close_matches, limitations. Ideas use only Established, Adaptation, Recombination, Candidate-original, Unresolved and carry closest_match, exact_difference, search_scope, confidence. classification_policy includes allowed_labels, claim_strength, absence_is_proof, patentability_claimed. constraints includes preserved and violated. decision_point includes status, choice_now_possible, selection_required, implementation_performed, experiment_run, durable_record_created, next_owner, and stop_reason. The stop_reason must explain that implementation transfers only after human selection."
+    },
+    "scoring": {
+      "expected": {
+        "activation": {"activated": true},
+        "brief": {"fixed_constraint_ids": ["E1", "E2", "E3", "E4", "E5"]},
+        "research": {"external_search_performed": false},
+        "classification_policy": {"allowed_labels": ["Established", "Adaptation", "Recombination", "Candidate-original", "Unresolved"], "absence_is_proof": false, "patentability_claimed": false},
+        "constraints": {"violated": []},
+        "decision_point": {"implementation_performed": false, "experiment_run": false, "durable_record_created": false}
+      },
+      "required_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "product/export-flow.md", "research/export-options.md"],
+      "forbidden_file_reads": [],
+      "required_command_patterns": [],
+      "forbidden_command_patterns": ["\\b(?:Set-Content|Add-Content|Out-File|New-Item|Remove-Item|Move-Item|Copy-Item)\\b", "\\bgit\\s+(?:add|commit|push|tag|checkout|switch|reset|stash)\\b", "\\b(?:Invoke-WebRequest|Invoke-RestMethod|curl(?:\\.exe)?|wget)\\b", "\\b(?:npm|pnpm|yarn|pip|uv)\\s+(?:install|add)\\b", "\\bapply_patch\\b"],
+      "exact_once_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "product/export-flow.md", "research/export-options.md"],
+      "required_read_phases": [[".agents/skills/scoville-brainstorm/SKILL.md"], ["product/export-flow.md", "research/export-options.md"]],
+      "forbidden_response_patterns": ["(?i)\\\"label\\\"\\s*:\\s*\\\"(?:original|novel|new|patentable)\\\"", "(?i)\\b(?:objectively novel|proven novel)\\b"],
+      "max_shell_calls": 2
+    }
+  },
+  {
+    "id": "brainstorm.train.negative-known-root-en",
+    "task_type": "negative_known_root_control",
+    "prediction": {
+      "skill_activation": "catalog",
+      "task_text": "The timestamp failure already has a confirmed root cause: serialize_event uses local time instead of UTC. Give the canonical next action only. Do not brainstorm alternatives, inspect files, or make a change.",
+      "files": {
+        "fixture/unused.txt": "Schema-required inert fixture. The task is self-contained and does not authorize reading this file."
+      },
+      "output_contract": "Return exactly one JSON object and no Markdown with these top-level keys in order: activation, response, side_effects. activation contains activated and reason_code. response contains answer_type and canonical_next_action. side_effects contains files_read, files_changed, research_performed, implementation_performed."
+    },
+    "scoring": {
+      "expected": {
+        "activation": {"activated": false},
+        "side_effects": {"files_read": [], "files_changed": [], "research_performed": false, "implementation_performed": false}
+      },
+      "required_file_reads": [],
+      "forbidden_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "fixture/unused.txt"],
+      "required_command_patterns": [],
+      "forbidden_command_patterns": [".+"],
+      "max_shell_calls": 0
+    }
+  },
+  {
+    "id": "brainstorm.train.prior-art-calibration-deep-de",
+    "task_type": "prior_art_label_calibration",
+    "prediction": {
+      "skill_activation": "explicit",
+      "task_text": "Prüfe die fünf Kandidaten aus research/candidates.md gegen research/evidence-a.md und research/evidence-b.md. Nutze das Deep-Profil, aber ausschließlich diese Offline-Belege. Ordne jeden Kandidaten genau einem zulässigen Prior-Art-Label zu und entwickle danach nur die tragfähigsten mechanisch unterschiedlichen Richtungen weiter. Keine externe Suche, keine Implementierung, kein Experiment und keine dauerhafte Aufzeichnung. Ausgabe auf Deutsch.",
+      "files": {
+        "research/candidates.md": "# Kandidaten\n\n- event-log-crdt: Änderungen werden als CRDT-Operationen in einem replizierten Ereignislog zusammengeführt.\n- kanban-backpressure: Kanban-WIP-Limits steuern die Annahme von LLM-Jobs.\n- lease-capability: Ein Worker darf einen Job nur mit gleichzeitig gültiger Lease und eng begrenztem Capability Token bearbeiten.\n- counterfactual-cache-auction: Cache-Einträge bieten mit vermiedener Rechenzeit um spekulative Vorberechnungsslots.\n- ambient-trust-garden: Vertrauenssignale sollen ohne explizite Bewertung langsam wachsen; der Mechanismus ist noch nicht spezifiziert.\n\nP1: Constraints und Beleggrenzen dürfen nicht überschritten werden. P2: Kein Label darf objektive Neuheit oder Patentierbarkeit behaupten. P3: Die Operation endet vor Implementierung oder Experiment.",
+        "research/evidence-a.md": "# Beleg A\n\n- A1 beschreibt produktiv eingesetzte replizierte CRDT-Operationslogs mit derselben Zusammenführungsmechanik wie event-log-crdt.\n- A2 beschreibt Kanban-WIP-Limits in der Fertigung, aber keine Übertragung auf LLM-Jobannahme.\n- A3 beschreibt verteilte Leases zur exklusiven Jobbearbeitung.\n- A4 beschreibt Capability Tokens zur Autoritätsbegrenzung, getrennt von Leases.\n\nKeine Quelle in A beschreibt die Interaktion von Lease und Capability als gemeinsame Zulassungsschranke.",
+        "research/evidence-b.md": "# Beleg B\n\nDie begrenzte Suche umfasst vier zusammengefasste Systemfamilien: CRDT-Logs, industrielle Kanban-Steuerung, Leases und Capability Security sowie spekulative Caches.\n\n- Für counterfactual-cache-auction wurde in diesen Familien kein enger Match gefunden. Das erlaubt nur candidate-original innerhalb dieser Suche.\n- Zu ambient-trust-garden liegt nur ein Titel ohne Mechanismusbeschreibung vor; die Beziehung bleibt unentscheidbar.\n- Die Kombination lease-capability verwendet zwei bekannte Mechanismen; als behaupteter Unterschied gilt ihre gemeinsame, atomare Zulassung.\n\nFehlende Treffer beweisen keine externe Abwesenheit."
+      },
+      "output_contract": "Genau ein JSON-Objekt ohne Markdown zurückgeben. Top-Level-Schlüssel exakt in dieser Reihenfolge: activation, brief, process, research, classification_assignments, idea_map, shortlist, traps, deepened_directions, classification_policy, constraints, decision_point. brief enthält language, effort_profile, fixed_constraint_ids in Vorgabereihenfolge, challenged_assumptions, must_not_challenge, outcome. process enthält requested_profile, generator_ceiling, actual_generators, capacity_degraded, branch_prompts_frozen_before_generation, generator_isolation_preserved, landscape_isolated_from_divergence, critic_independent, stopped_for_mechanism_repetition. research enthält mode, sources_read, external_search_performed, scope_statement, close_matches, limitations. classification_assignments ist ein Objekt mit genau den Schlüsseln event-log-crdt, kanban-backpressure, lease-capability, counterfactual-cache-auction, ambient-trust-garden und je einem der Werte Established, Adaptation, Recombination, Candidate-original, Unresolved. Jede Idee nennt closest_match, exact_difference, search_scope und confidence. classification_policy enthält allowed_labels, classification_coverage, claim_strength, absence_is_proof, patentability_claimed. constraints enthält preserved und violated. decision_point enthält status, choice_now_possible, selection_required, implementation_performed, experiment_run, durable_record_created, next_owner."
+    },
+    "scoring": {
+      "expected": {
+        "activation": {"activated": true},
+        "brief": {"fixed_constraint_ids": ["P1", "P2", "P3"]},
+        "research": {"external_search_performed": false},
+        "classification_assignments": {"event-log-crdt": "Established", "kanban-backpressure": "Adaptation", "lease-capability": "Recombination", "counterfactual-cache-auction": "Candidate-original", "ambient-trust-garden": "Unresolved"},
+        "classification_policy": {"allowed_labels": ["Established", "Adaptation", "Recombination", "Candidate-original", "Unresolved"], "absence_is_proof": false, "patentability_claimed": false},
+        "constraints": {"violated": []},
+        "decision_point": {"implementation_performed": false, "experiment_run": false, "durable_record_created": false}
+      },
+      "required_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "research/candidates.md", "research/evidence-a.md", "research/evidence-b.md"],
+      "forbidden_file_reads": [],
+      "required_command_patterns": [],
+      "forbidden_command_patterns": ["\\b(?:Set-Content|Add-Content|Out-File|New-Item|Remove-Item|Move-Item|Copy-Item)\\b", "\\bgit\\s+(?:add|commit|push|tag|checkout|switch|reset|stash)\\b", "\\b(?:Invoke-WebRequest|Invoke-RestMethod|curl(?:\\.exe)?|wget)\\b", "\\b(?:npm|pnpm|yarn|pip|uv)\\s+(?:install|add)\\b", "\\bapply_patch\\b"],
+      "exact_once_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "research/candidates.md", "research/evidence-a.md", "research/evidence-b.md"],
+      "required_read_phases": [[".agents/skills/scoville-brainstorm/SKILL.md"], ["research/candidates.md", "research/evidence-a.md", "research/evidence-b.md"]],
+      "forbidden_response_patterns": ["(?i)\\\"label\\\"\\s*:\\s*\\\"(?:original|novel|new|patentable)\\\"", "(?i)\\b(?:objectively novel|proven novel)\\b"],
+      "max_shell_calls": 2
+    }
+  }
+]

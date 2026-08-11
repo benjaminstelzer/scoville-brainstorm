@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "items": {
+    "brainstorm.train.architecture-standard-en": {
+      "brief_fixtures": ["architecture/current-system.md"],
+      "landscape_fixtures": ["research/architecture-landscape.md"]
+    },
+    "brainstorm.train.product-compact-de": {
+      "brief_fixtures": ["product/support-brief.md"],
+      "landscape_fixtures": ["research/workflow-landscape.md"]
+    },
+    "brainstorm.train.api-deep-en": {
+      "brief_fixtures": ["api/current-contract.md", "api/consumers.md"],
+      "landscape_fixtures": ["research/sdk-patterns.md"]
+    },
+    "brainstorm.train.repo-alternatives-standard-de": {
+      "brief_fixtures": ["repo/build-architecture.md", "repo/repository-constraints.md"],
+      "landscape_fixtures": ["research/local-options.md"]
+    },
+    "brainstorm.train.debug-uncertain-compact-en": {
+      "brief_fixtures": ["debug/observations.md", "debug/system.md"],
+      "landscape_fixtures": []
+    },
+    "brainstorm.train.authority-stop-standard-en": {
+      "brief_fixtures": ["product/export-flow.md"],
+      "landscape_fixtures": ["research/export-options.md"]
+    },
+    "brainstorm.train.negative-known-root-en": {
+      "brief_fixtures": [],
+      "landscape_fixtures": []
+    },
+    "brainstorm.train.prior-art-calibration-deep-de": {
+      "brief_fixtures": ["research/candidates.md"],
+      "landscape_fixtures": ["research/evidence-a.md", "research/evidence-b.md"]
+    },
+    "brainstorm.val.architecture-deep-de": {
+      "brief_fixtures": ["architecture/federated-analytics.md"],
+      "landscape_fixtures": ["research/federated-landscape.md"]
+    },
+    "brainstorm.val.workflow-standard-en": {
+      "brief_fixtures": ["workflow/release-approval.md"],
+      "landscape_fixtures": ["research/approval-patterns.md"]
+    },
+    "brainstorm.val.sibling-ui-compact-de": {
+      "brief_fixtures": ["ui/navigation-brief.md"],
+      "landscape_fixtures": ["research/navigation-patterns.md"]
+    },
+    "brainstorm.val.negative-canonical-en": {
+      "brief_fixtures": [],
+      "landscape_fixtures": []
+    },
+    "brainstorm.val.negative-quick-de": {
+      "brief_fixtures": [],
+      "landscape_fixtures": []
+    }
+  }
+}

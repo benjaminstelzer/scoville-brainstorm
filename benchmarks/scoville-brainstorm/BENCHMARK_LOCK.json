@@ -1,0 +1,74 @@
+{
+  "state": "frozen_before_any_model_call",
+  "created": "2026-08-11",
+  "benchmark": "scoville-brainstorm",
+  "optimizer": "gpt-5.6-sol/xhigh",
+  "target": "gpt-5.6-terra/medium",
+  "test_policy": "opaque_one_shot_after_final_candidate_gate",
+  "files": {
+    "train/items.json": {
+      "bytes": 40062,
+      "sha256": "99C0D68E0C837DAA095BCC6BEF15E8CEB0E52341BB952E6C727E614240CC0D4C"
+    },
+    "val/items.json": {
+      "bytes": 18075,
+      "sha256": "2A034885780E070B6F9CA332941F0FDD50450B446A654C75EFC6F32D96D38DF8"
+    },
+    "test/items.json": {
+      "bytes": 28058,
+      "sha256": "9DA814D4C998A4C0D14B4FD7ED7CD51C43E42954422987E7379A2073CE4B7FBB"
+    },
+    "TEST_SEAL.json": {
+      "bytes": 1052,
+      "sha256": "043EF03125D5A947536E516342B3DE5B68D7FD35934502F10B7A9815A1CC8F97"
+    },
+    "COVERAGE_MATRIX.md": {
+      "bytes": 9377,
+      "sha256": "A2A681F85D9D37515D04C6F732FED8ECC780D78EF29830C5D6FEA3A27D13097F"
+    },
+    "PROTOCOL.md": {
+      "bytes": 11355,
+      "sha256": "752A731F881E10C4566C3A2902A07510B4E5BE7CBB079B954A4344686636BFB5"
+    },
+    "README.md": {
+      "bytes": 1506,
+      "sha256": "549FC59133E891F638970ABF0230D64BBD344DC61E3D8F3F51293D076FE45B56"
+    },
+    "BASELINE_MANIFEST.json": {
+      "bytes": 1758,
+      "sha256": "DE909B54631B9DC2CA1E2CEE4E3DB25EF904C82FA76E6EBF93A51076F4E5F0D0"
+    },
+    "SOURCE_ROLES.json": {
+      "bytes": 2168,
+      "sha256": "9C6E4692F9C60258B184806BBBA519940DBBBD498691180F6066F30BE8E424FB"
+    },
+    "packages/brainstorm-single-session-control/SKILL.md": {
+      "bytes": 954,
+      "sha256": "DB89449B5E4EC499D94D142BF03C97C64EEEB808FA92B33E0C35199239B60C3C"
+    },
+    "packages/upstream-adhd/SKILL.md": {
+      "bytes": 11118,
+      "sha256": "06DEBE68A370206ACD93E0B2EE54D6395BC367FDFBC079F2348E3CE2966DAC0A"
+    },
+    "packages/upstream-adhd/LICENSE": {
+      "bytes": 1074,
+      "sha256": "3F08D24B5561FC516B262351CB8E0302D30E7D9139F01B4A637E4BF3B5AB0938"
+    },
+    "scripts/validate_open.py": {
+      "bytes": 4300,
+      "sha256": "E33885FF0501F65935A37B4F6FAB70F60949B03EC7BA39A9F247D609515943C0"
+    },
+    "scripts/materialize_arm.py": {
+      "bytes": 3502,
+      "sha256": "3B3A99C3668857CD1626C778D87EF7CF8C52001E9644C8D8DE6902CDABB8710B"
+    },
+    "scripts/normalize_output.py": {
+      "bytes": 5649,
+      "sha256": "876EF889DB4FDD74A50F5A140C850D1FEDF8CC44013800D749EED75D77ED8ED2"
+    },
+    "scripts/test_normalize_output.py": {
+      "bytes": 2841,
+      "sha256": "753A3F02F5B6397285F39DA2DCF9A0C9CB28E2C6F59692BDA318A0F90B8A7423"
+    }
+  }
+}

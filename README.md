@@ -1,0 +1,143 @@
+# Scoville Brainstorm
+
+Broaden the mechanism space before committing to one answer.
+
+Scoville Brainstorm is a read-only Agent Skill for material architecture,
+product, workflow, research, and unknown-root choices. It explores causally
+different mechanisms, checks them against fixed constraints and bounded prior
+art, and returns a decision-ready shortlist. It stops before selection,
+implementation, durable planning, or publication.
+
+Do not use it for one canonical answer, a known-root fix, ordinary review or
+wording, or one small reversible change.
+
+## Why "Scoville"?
+
+The family is named for useful signal that remains detectable after dilution.
+Brainstorming produces words easily; its useful heat is the smaller set of
+distinct mechanisms that survives constraints, prior-art comparison, and
+criticism.
+
+## How to use
+
+Name Scoville Brainstorm and an effort profile in the request. Compact targets
+up to three generator branches, Standard up to five, and Deep six to eight when
+host capacity permits. Weak ideas are never added merely to reach a count.
+
+**Compact** — a quick check before choosing between a few plausible directions:
+
+```text
+Use Scoville Brainstorm in Compact mode. Find materially different mechanisms for reducing checkout abandonment without changing the payment provider. Preserve the stated constraints, return a short decision-ready comparison, and do not choose or implement a direction.
+```
+
+**Standard** — broader exploration with prior-art separation:
+
+```text
+Use Scoville Brainstorm in Standard mode. Explore materially different architectures for offline-first collaboration. Separate established approaches from adaptations or candidate-original directions, identify attractive traps, and stop at a shortlist with the cheapest falsifier for each direction.
+```
+
+**Deep** — a material, uncertain choice worth a wider search:
+
+```text
+Use Scoville Brainstorm in Deep mode. Investigate fundamentally different mechanisms for recovering from intermittent data corruption with an unknown root cause. Include a load-bearing-assumption challenge, a practical comparator, bounded prior-art research, and falsifiable hypotheses. Do not diagnose, plan, or implement the winner.
+```
+
+Explicit `$scoville-brainstorm` invocation also works on hosts that support
+named Skill invocation.
+
+## Install
+
+Use an Agent Skills-compatible host and Terra 5.6 Medium or a comparably
+capable executor such as Opus 4.8. Ask the agent to install:
+
+```text
+Install this Agent Skill and refresh the available Skill list:
+https://github.com/benjaminstelzer/scoville-brainstorm/tree/main/scoville-brainstorm
+Keep the installed directory name scoville-brainstorm. Use Terra 5.6 Medium or a comparably capable executor such as Opus 4.8.
+```
+
+The final path must end in
+`<skills-dir>/scoville-brainstorm/SKILL.md`. For Claude Code, use
+`~/.claude/skills/` globally or `.claude/skills/` inside one project. Other
+hosts use their supported Skills directory.
+
+**What it costs.** Brainstorm loads a 1,712-token Core, then generator,
+landscape, and critic passes can use materially more tokens than working
+without the Skill. That cost buys broader mechanism coverage and a constrained,
+decision-ready shortlist. Use it for material or uncertain choices; skip it for
+known answers and small vibe-coding tasks. See
+[benchmark evidence](docs/benchmark-evidence.md).
+
+## What it enforces
+
+- **Decision-shaped activation.** Difficulty alone does not trigger an idea
+  search; the request must need materially different mechanisms.
+- **One factual frame.** Facts, authority, fixed constraints, assumptions,
+  source scope, and effort profile are frozen before divergence.
+- **Independent generation when available.** Generators do not see sibling or
+  landscape output. A single-agent fallback is labeled by its real capacity.
+- **Mechanisms over paraphrases.** Convergence merges surface variants and
+  rejects unsupported or constraint-breaking directions.
+- **Calibrated originality.** Evidence labels describe only the documented,
+  bounded comparison and never claim objective novelty or patentability.
+- **A hard decision stop.** The result gives benefits, risks, and cheapest
+  falsifiers, then waits for human selection.
+
+The complete contract is in [SKILL.md](scoville-brainstorm/SKILL.md).
+
+## How it works
+
+A request is routed as `NO`, `ASK`, or `YES`. A positive run freezes one brief,
+uses isolated generators and a separate landscape pass when the host supports
+them, clusters ideas by mechanism, applies independent criticism, and returns
+at most three distinct directions (two in Compact). With no agent delegation,
+one consolidated pass follows the same constraints without claiming isolation.
+The Skill installs no executable software and requires no network service.
+
+## Scoville family
+
+Each Skill works independently. Combine only the concerns the task actually
+needs:
+
+- [Brainstorm](https://github.com/benjaminstelzer/scoville-brainstorm) explores
+  materially different mechanisms before selection.
+- [Code](https://github.com/benjaminstelzer/scoville-code-anti-ai-slop) owns
+  engineering scope, implementation, risk, and validation.
+- [UI](https://github.com/benjaminstelzer/scoville-ui-anti-ai-slop) owns
+  interface hierarchy, framework fit, accessibility, and rendered evidence.
+- [Scribe](https://github.com/benjaminstelzer/scoville-scribe-anti-ai-slop) owns
+  wording, terminology, factual meaning, and source fidelity.
+- [Plan](https://github.com/benjaminstelzer/scoville-plan) owns durable Plans,
+  Work Items, Decisions, and lifecycle state.
+- [Handoff](https://github.com/benjaminstelzer/scoville-handoff) transfers active
+  work to another agent or session.
+
+## Status
+
+A reliability-first extension of
+[Microsoft SkillOpt](https://github.com/microsoft/SkillOpt), combined with
+SkillReducer-style analysis, produced **182 optimization and evaluation runs**
+and **584 benchmark case executions**. The final Skill passed **43/43 semantic
+cases**, **36/36 activation cases**, and **4/4 sealed holdout cases**. This is
+the first release, so no previous release provides a meaningful compression
+comparison. See [benchmark evidence](docs/benchmark-evidence.md).
+The [family run ledger](docs/optimization-history.md) shows the complete count.
+
+## Sources
+
+- [UditAkhourii/adhd](https://github.com/UditAkhourii/adhd/tree/3d9dc487bc2eba4449742e2db0d92be9ebdf95b6)
+  for isolated ideation, delayed criticism, and convergence after divergence.
+- [SkillReducer](https://arxiv.org/abs/2603.29919v2) for semantic-unit analysis
+  and progressive disclosure.
+- [Tree of Thoughts](https://arxiv.org/abs/2305.10601v2) and
+  [Brainstorm then Select](https://openreview.net/forum?id=8HwKaJ1wvl) for
+  separating candidate generation from evaluation and selection.
+- [Agent Skills specification](https://agentskills.io/specification) for the
+  portable package contract.
+
+Research scope and pinned sources are listed in
+[the source map](docs/research/source-map.md).
+
+## License
+
+MIT - see [LICENSE](LICENSE).

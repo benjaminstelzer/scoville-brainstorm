@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "candidate": "scoville-brainstorm-reliability-v1",
+  "frozen_at": "2026-08-11",
+  "snapshot_root": "C:/Users/benja/Desktop/kompressidee/skillopt-studio/snapshots/scoville-brainstorm-reliability-v1/scoville-brainstorm",
+  "benchmark_lock_sha256": "EFF995DD8637295A9530EF6F84B0D72A14767EF86EBEF6FBB227D1C1F185E9A1",
+  "skillopt_commit": "ba820b500f9da96685cf2780c7dc85ed4eb6563e",
+  "executor": {
+    "model": "gpt-5.6-terra",
+    "reasoning": "medium"
+  },
+  "analyzer": {
+    "model": "gpt-5.6-sol",
+    "reasoning": "xhigh"
+  },
+  "files": {
+    "SKILL.md": {
+      "bytes": 5491,
+      "sha256": "86D3B8EE20D04913224A74AC9AB046837CD1CF5DC8E3835BD33B5CB584B05C11"
+    },
+    "references/orchestration.md": {
+      "bytes": 4380,
+      "sha256": "E80D6F7815CC0E16F224EB04702F4A3313B16DDBB768DF580F899809A0FFFF0D"
+    },
+    "references/evidence-and-output.md": {
+      "bytes": 3193,
+      "sha256": "C4D349F728697B01CAD2227155FDF65A7FFBC560CE288805C79C35D13F5C186C"
+    },
+    "agents/openai.yaml": {
+      "bytes": 285,
+      "sha256": "074DE076969037FEC130689FA84B1CF7736A177F0ECFF0E7247D086C3F3FFE40"
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "bytes": 700,
+      "sha256": "21E292299CF6DA733C4C5F8B4FD542CA5FDF90602D80A43EE6A57BD165CFD737"
+    },
+    "LICENSES/ADHD-MIT.txt": {
+      "bytes": 1074,
+      "sha256": "3F08D24B5561FC516B262351CB8E0302D30E7D9139F01B4A637E4BF3B5AB0938"
+    }
+  },
+  "test_state": "opaque_unexecuted"
+}

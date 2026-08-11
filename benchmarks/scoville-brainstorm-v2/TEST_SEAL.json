@@ -1,0 +1,41 @@
+{
+  "state": "sealed",
+  "date": "2026-08-11",
+  "supersedes_unexecuted_seal_sha256": "AD4F1A93BF9154C96EA74911C8C7368A19B2DDD1644262605474C401193A029F",
+  "split": "test",
+  "item_count": 4,
+  "files": {
+    "test/items.json": {
+      "sha256": "9DA814D4C998A4C0D14B4FD7ED7CD51C43E42954422987E7379A2073CE4B7FBB",
+      "bytes": 28058
+    }
+  },
+  "author_constraints": {
+    "work_areas": [
+      "test",
+      "TEST_SEAL.json"
+    ],
+    "allowed_source_reads": [
+      "docs/behavior-contract.md",
+      "skillopt_studio/benchmark.py"
+    ],
+    "forbidden_reads": [
+      "Skill candidates",
+      "Train cases",
+      "Val cases",
+      "other benchmark directories",
+      "Plans",
+      "prior results",
+      "memory",
+      "test results"
+    ],
+    "unseen_item_count": 4,
+    "self_contained": true,
+    "offline": true,
+    "models_run": false,
+    "gold_location": "scoring only",
+    "validated_with": "skillopt_studio.benchmark.validate_item",
+    "post_seal_access": "hash and size verification only"
+  },
+  "payload_included": false
+}

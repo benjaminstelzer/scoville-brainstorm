@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "created": "2026-08-11",
+  "target_executor": {
+    "model": "gpt-5.6-terra",
+    "reasoning": "medium"
+  },
+  "diagnostic_analyzer": {
+    "model": "gpt-5.6-sol",
+    "reasoning": "xhigh"
+  },
+  "skillopt": {
+    "repository": "https://github.com/microsoft/SkillOpt",
+    "commit": "ba820b500f9da96685cf2780c7dc85ed4eb6563e"
+  },
+  "arms": {
+    "single_session_control": {
+      "kind": "benchmark_control",
+      "package": "packages/brainstorm-single-session-control",
+      "claim": "One-context brainstorm without prescribed branching, research separation, or search operators"
+    },
+    "upstream_adhd": {
+      "kind": "unchanged_upstream",
+      "repository": "https://github.com/UditAkhourii/adhd",
+      "commit": "3d9dc487bc2eba4449742e2db0d92be9ebdf95b6",
+      "skill_source": "https://raw.githubusercontent.com/UditAkhourii/adhd/3d9dc487bc2eba4449742e2db0d92be9ebdf95b6/skills/adhd/SKILL.md",
+      "skill_sha256": "06DEBE68A370206ACD93E0B2EE54D6395BC367FDFBC079F2348E3CE2966DAC0A",
+      "skill_bytes": 11118,
+      "license_source": "https://raw.githubusercontent.com/UditAkhourii/adhd/3d9dc487bc2eba4449742e2db0d92be9ebdf95b6/LICENSE",
+      "license_sha256": "3F08D24B5561FC516B262351CB8E0302D30E7D9139F01B4A637E4BF3B5AB0938",
+      "license_bytes": 1074,
+      "license": "MIT"
+    },
+    "scoville_candidate": {
+      "kind": "future_frozen_candidate",
+      "package": "scoville-brainstorm",
+      "status": "not_authored_during_baseline_freeze"
+    }
+  },
+  "splits": {
+    "train": {"cases": 8, "open_repetitions": 3},
+    "val": {"cases": 5, "open_repetitions": 3},
+    "test": {"cases": 4, "one_shot": true, "opaque_until_final_gate": true}
+  },
+  "network_access": false,
+  "prediction_reuse": false
+}
+

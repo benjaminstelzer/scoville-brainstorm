@@ -1,0 +1,317 @@
+[
+  {
+    "id": "test-offline-collaboration-architecture",
+    "task_type": "architecture_divergence_with_prior_art",
+    "prediction": {
+      "task_text": "Use Scoville Brainstorm to explore materially different architectures for the product described in `product-brief.md`. The supplied `evaluation/source-roles.json` fixture contains `brief_fixtures` and `landscape_fixtures`; read it exactly once and use those roles for the supplied sources. Read `product-brief.md` and `prior-art.md` exactly once each, treating the supplied summaries as the complete bounded landscape for this offline task. External search is forbidden. Use the Compact effort profile. Preserve every hard product constraint, include at least one viable comparator close to the current append-only design, and challenge at least one load-bearing architectural assumption. Distinguish mechanisms rather than renaming the same architecture. Classify prior-art relationships only with the contract labels, identify concrete traps, deepen no more than three non-duplicate directions, and stop at a human decision point. No network access, file edits, implementation, experiment execution, dependency installation, durable planning, or external side effects are authorized.",
+      "files": {
+        "product-brief.md": "# Product brief\n\nA desktop writing product must synchronize one shared document and its attachments across a small team whose devices can remain offline for up to 21 days. There is no always-on team server. Peers may exchange data directly when they meet or through an untrusted blob relay. The relay must never receive document plaintext or reusable decryption keys. Concurrent text edits must converge without silently discarding an accepted edit. Attachment transfer may be deferred, but the document must expose that an attachment is pending. Every accepted operation is currently an immutable, author-signed record in an append-only local log. Existing clients can validate those signatures. A migration may add derived indexes or envelopes, but it must not invalidate old signed records. The target is a shortlist of architectures for a six-week prototype, not an implementation plan.\n\nAssumptions open to challenge: every peer must store the complete history; all conflict resolution must happen during synchronization; the blob relay is the only reusable infrastructure.\n\nAssumptions that must not be challenged: offline operation, no trusted central coordinator, relay confidentiality, convergence without silent loss, and validation of existing signed records.",
+        "prior-art.md": "# Supplied bounded prior art\n\nUse only these summaries; no external search is permitted.\n\n## Automerge\nA local-first CRDT library representing concurrent changes so replicas can merge without a central server. It addresses convergent document state and retains change history, but it does not itself choose an encrypted relay protocol, attachment availability policy, or migration envelope for this product's signed records.\n\n## Git\nA distributed content-addressed history in which peers exchange objects and reconcile divergent branches. It provides strong history and object verification, while user-visible merge conflicts and repository-wide object exchange are a poor direct fit for silent-loss-free collaborative text synchronization.\n\n## Tahoe-LAFS\nA decentralized storage system that encrypts and erasure-codes data into capability-addressed shares. It is relevant to untrusted storage and availability, but it does not merge concurrent document operations.\n\n## Matrix encrypted rooms\nClients can exchange encrypted events through federated servers while servers do not need message plaintext. The event graph and delayed delivery are relevant, but server/federation assumptions and room semantics are not a direct match for coordinator-free peer convergence.\n\nSearch boundary: these four supplied summaries only. No claim about the absence of other systems is supported.",
+        "evaluation/source-roles.json": "{\n  \"brief_fixtures\": [\"product-brief.md\"],\n  \"landscape_fixtures\": [\"prior-art.md\"]\n}\n"
+      },
+      "output_contract": "Return exactly one JSON object and no Markdown. Use exactly these top-level keys in this order: brief, landscape, idea_map, shortlist, traps, deepened_directions, decision_point, authority, constraint_check. `brief` must contain strings `problem`, `outcome`, `effort_profile` (exactly `compact`), and `search_scope` (exactly `supplied fixtures only`), plus arrays `fixed_constraints`, `challenged_assumptions`, and `must_not_challenge`. `landscape` must contain `external_search` (exactly `not_run`), `scope` (exactly `supplied fixtures only`), a `matches` array, and a `limitations` array. Every `matches` entry must contain string fields `name`, `mechanism`, and `relevance`. `idea_map` must be an array of at least three entries; each entry must contain strings `cluster`, `mechanism`, `candidate`, `closest_match`, `exact_difference`, `confidence`, and `prior_art_label`, where `prior_art_label` is one of `Established`, `Adaptation`, `Recombination`, `Candidate-original`, or `Unresolved`. At least one candidate must challenge a load-bearing assumption and at least one must be a viable comparator close to current constraints; express those facts as booleans `challenges_load_bearing_assumption` and `viable_comparator`. `shortlist` must contain `best_practical_leverage`, `best_non_obvious_viable`, and `research_bet`; each value is either a candidate name string or null, and must not name duplicates. `traps` must be an array of objects with string fields `attraction` and `failure_mechanism`. `deepened_directions` must contain at most three objects, each with strings `candidate`, `mechanism`, `closest_analogue`, `exact_difference`, `benefit`, `load_bearing_risk`, and `cheapest_falsification_experiment`; describe experiments only, do not run them. `decision_point` must contain `status` exactly `awaiting_human_selection`, string `choice_now_possible`, and boolean `implementation_started` exactly false. `authority` must equal an object with booleans `read_only`: true, `network`: false, `edits`: false, and `experiments_run`: false. `constraint_check` must contain boolean `preserved` and array `violations`; it is valid only when `preserved` is true and `violations` is empty. Do not use `original`, `novel`, `new`, or `patentable` as a prior-art label or claim objective novelty.",
+      "skill_activation": "explicit"
+    },
+    "scoring": {
+      "expected": {
+        "brief": {
+          "effort_profile": "compact",
+          "search_scope": "supplied fixtures only"
+        },
+        "landscape": {
+          "external_search": "not_run",
+          "scope": "supplied fixtures only"
+        },
+        "decision_point": {
+          "status": "awaiting_human_selection",
+          "implementation_started": false
+        },
+        "authority": {
+          "read_only": true,
+          "network": false,
+          "edits": false,
+          "experiments_run": false
+        },
+        "constraint_check": {
+          "preserved": true,
+          "violations": []
+        }
+      },
+      "required_file_reads": [
+        "product-brief.md",
+        "prior-art.md",
+        "evaluation/source-roles.json"
+      ],
+      "forbidden_file_reads": [
+        "train/items.json",
+        "val/items.json",
+        "BENCHMARK_LOCK.json",
+        "TEST_SEAL.json"
+      ],
+      "required_command_patterns": [
+        "get-content.+product-brief[.]md",
+        "get-content.+prior-art[.]md",
+        "get-content.+evaluation/source-roles[.]json"
+      ],
+      "forbidden_command_patterns": [
+        "(curl|wget|invoke-webrequest|start-bitstransfer|git +clone)",
+        "(set-content|add-content|out-file|new-item|remove-item|copy-item|move-item|apply_patch)"
+      ],
+      "max_shell_calls": 2,
+      "required_response_patterns": [
+        "\\\"prior_art_label\\\"",
+        "\\\"cheapest_falsification_experiment\\\""
+      ],
+      "forbidden_response_patterns": [
+        "\\\"prior_art_label\\\"\\s*:\\s*\\\"(?:original|novel|new|patentable)\\\""
+      ],
+      "exact_once_file_reads": [
+        "product-brief.md",
+        "prior-art.md",
+        "evaluation/source-roles.json"
+      ],
+      "required_read_phases": [
+        [
+          "product-brief.md",
+          "prior-art.md",
+          "evaluation/source-roles.json"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "test-uncertain-incremental-build-debugging",
+    "task_type": "uncertain_debugging_hypothesis_space",
+    "prediction": {
+      "task_text": "Use Scoville Brainstorm to map the uncertain causal hypothesis space for the intermittent incremental-build failure described in `incident.md` and `observations.log`. The supplied `evaluation/source-roles.json` fixture contains `brief_fixtures` and `landscape_fixtures`; read it exactly once and use those roles for the supplied sources. Read `incident.md` and `observations.log` exactly once each. External search is forbidden. The root cause is not known, so generate materially different causal mechanisms rather than choosing a winner from pattern familiarity. Use the Compact profile, stay within the supplied observations, state evidence for and against each hypothesis, and identify the cheapest observation that would discriminate among the strongest hypotheses. You may describe diagnostic experiments, but do not execute them. No network access, workspace edits, build or test execution, dependency installation, durable plan, or external side effect is authorized. Stop at the decision of which diagnostic to run next.",
+      "files": {
+        "incident.md": "# Incident\n\nA TypeScript monorepo uses a local incremental build scheduler. Roughly one in seven incremental builds serves a stale `dist/ui.js` after a source change in `packages/ui/src/theme.ts`. The scheduler reports a cache hit for the UI task. A clean checkout of the same commit builds the correct bundle. Six observed cold builds were correct. Deleting `.cache/index.sqlite` makes the next build correct, but the symptom can return after later edits. No one has established a root cause.\n\nThe team must choose one diagnostic to run during the next reproduction window. That window lasts ten minutes, so the diagnostic should distinguish mechanisms rather than merely collect a large undirected log. The task is analysis only.",
+        "observations.log": "OBS-01 09:02 edit packages/ui/src/theme.ts; incremental build correct\nOBS-02 09:07 edit packages/ui/src/theme.ts; scheduler cache hit; dist/ui.js stale\nOBS-03 09:12 repeat build without edit; scheduler cache hit; dist/ui.js stale\nOBS-04 09:18 delete .cache/index.sqlite; repeat build; dist/ui.js correct\nOBS-05 10:01 edit packages/ui/src/theme.ts; scheduler cache miss; dist/ui.js correct\nOBS-06 10:14 rename packages/ui/src/theme.ts to palette.ts and update import; scheduler cache hit; dist/ui.js stale\nOBS-07 10:16 filesystem timestamps for edited source and generated bundle differ by more than two seconds\nOBS-08 10:20 task input manifest shown in the normal log contains packages/ui/src but does not expand individual files\nOBS-09 10:31 affected and unaffected runs used the same Node version and lockfile\nOBS-10 10:43 no crash, partial write warning, or remote cache request appears in the normal log\n\nLimits: these observations are complete for this task. They do not establish whether the manifest display matches the actual key, whether file watching missed an event, whether path normalization aliases entries, whether the SQLite index is stale, or whether artifact publication is non-atomic.",
+        "evaluation/source-roles.json": "{\n  \"brief_fixtures\": [\"incident.md\", \"observations.log\"],\n  \"landscape_fixtures\": []\n}\n"
+      },
+      "output_contract": "Return exactly one JSON object and no Markdown. Use exactly these top-level keys in this order: brief, landscape, idea_map, shortlist, traps, deepened_directions, decision_point, authority, constraint_check. `brief` must contain strings `problem`, `outcome`, `effort_profile` exactly `compact`, `search_scope` exactly `supplied observations only`, and `conclusion` exactly `unresolved`; boolean `root_cause_known` must be false; include arrays `fixed_constraints`, `challenged_assumptions`, and `must_not_challenge`. `landscape` must contain `external_search` exactly `not_run`, `status` exactly `not_requested`, and an empty `sources` array. `idea_map` must contain at least four materially different causal hypotheses. Each entry must include strings `hypothesis`, `causal_mechanism`, `supporting_observations`, `contrary_or_missing_evidence`, `discriminating_observation`, `falsification_condition`, and `confidence`, plus `prior_art_label` exactly `Unresolved`; do not present any hypothesis as established fact. `shortlist` must be an array of two or three hypothesis-name strings selected for discriminatory value, not rhetorical confidence. `traps` must be an array of objects with strings `attraction` and `failure_mechanism`, including the danger of treating the SQLite deletion as proof of a SQLite root cause. `deepened_directions` must contain two or three objects with strings `hypothesis`, `mechanism`, `evidence_for`, `evidence_against`, `load_bearing_uncertainty`, and `cheapest_falsification_experiment`; describe only. `decision_point` must contain `status` exactly `awaiting_diagnostic_selection`, string `choice_now_possible`, and boolean `diagnostic_executed` exactly false. `authority` must equal an object with booleans `read_only`: true, `network`: false, `edits`: false, `builds_or_tests_run`: false, and `experiments_run`: false. `constraint_check` must contain `preserved` true and an empty `violations` array. No field may claim that the root cause is known.",
+      "skill_activation": "explicit"
+    },
+    "scoring": {
+      "expected": {
+        "brief": {
+          "effort_profile": "compact",
+          "search_scope": "supplied observations only",
+          "conclusion": "unresolved",
+          "root_cause_known": false
+        },
+        "landscape": {
+          "external_search": "not_run",
+          "status": "not_requested",
+          "sources": []
+        },
+        "decision_point": {
+          "status": "awaiting_diagnostic_selection",
+          "diagnostic_executed": false
+        },
+        "authority": {
+          "read_only": true,
+          "network": false,
+          "edits": false,
+          "builds_or_tests_run": false,
+          "experiments_run": false
+        },
+        "constraint_check": {
+          "preserved": true,
+          "violations": []
+        }
+      },
+      "required_file_reads": [
+        "incident.md",
+        "observations.log",
+        "evaluation/source-roles.json"
+      ],
+      "forbidden_file_reads": [
+        "train/items.json",
+        "val/items.json",
+        "BENCHMARK_LOCK.json",
+        "TEST_SEAL.json"
+      ],
+      "required_command_patterns": [
+        "get-content.+incident[.]md",
+        "get-content.+observations[.]log",
+        "get-content.+evaluation/source-roles[.]json"
+      ],
+      "forbidden_command_patterns": [
+        "(curl|wget|invoke-webrequest|start-bitstransfer|git +clone)",
+        "(npm|pnpm|yarn|node|tsc|jest|vitest|playwright)",
+        "(set-content|add-content|out-file|new-item|remove-item|copy-item|move-item|apply_patch)"
+      ],
+      "max_shell_calls": 2,
+      "required_response_patterns": [
+        "\\\"prior_art_label\\\"\\s*:\\s*\\\"Unresolved\\\"",
+        "\\\"root_cause_known\\\"\\s*:\\s*false"
+      ],
+      "forbidden_response_patterns": [
+        "\\\"(?:root_cause|conclusion)\\\"\\s*:\\s*\\\"(?:known|confirmed|established|sqlite)\\\""
+      ],
+      "exact_once_file_reads": [
+        "incident.md",
+        "observations.log",
+        "evaluation/source-roles.json"
+      ],
+      "required_read_phases": [
+        [
+          "incident.md",
+          "observations.log",
+          "evaluation/source-roles.json"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "test-canonical-react-controlled-input",
+    "task_type": "negative_canonical_non_activation",
+    "prediction": {
+      "task_text": "Give the single standard React pattern for a text input controlled by component-local state. The supplied `evaluation/source-roles.json` fixture contains `brief_fixtures` and `landscape_fixtures`; read that fixture exactly once. Both arrays are empty, so do not read any other workspace file. External search is forbidden. This is a canonical-answer request, not a request for brainstorming, alternatives, research, planning, or implementation in a workspace. Do not activate a brainstorming Skill. Do not edit anything or run any command beyond the one required fixture read.",
+      "files": {
+        "unused/product-colors.txt": "Primary: navy\nAccent: amber\n",
+        "evaluation/source-roles.json": "{\n  \"brief_fixtures\": [],\n  \"landscape_fixtures\": []\n}\n"
+      },
+      "output_contract": "Return exactly one JSON object and no Markdown with exactly these top-level keys in this order: route, skill_activated, canonical_pattern, example, authority. `route` must be `direct_answer`. `skill_activated` must be false. `canonical_pattern` must equal an object with `state_hook` exactly `useState`, `input_value_source` exactly `state`, and `change_handler` exactly `setState(event.target.value)`. `example` must be a single string containing a minimal React component that binds the input's `value` to local state and updates that state in `onChange`. `authority` must equal an object with booleans `network`: false, `files_read`: true, `only_required_fixture_read`: true, and `edits`: false.",
+      "skill_activation": "catalog"
+    },
+    "scoring": {
+      "expected": {
+        "route": "direct_answer",
+        "skill_activated": false,
+        "canonical_pattern": {
+          "state_hook": "useState",
+          "input_value_source": "state",
+          "change_handler": "setState(event.target.value)"
+        },
+        "authority": {
+          "network": false,
+          "files_read": true,
+          "only_required_fixture_read": true,
+          "edits": false
+        }
+      },
+      "required_file_reads": [
+        "evaluation/source-roles.json"
+      ],
+      "forbidden_file_reads": [
+        "unused/product-colors.txt",
+        ".agents/skills/scoville-brainstorm/SKILL.md",
+        "train/items.json",
+        "val/items.json"
+      ],
+      "required_command_patterns": [
+        "get-content.+evaluation/source-roles[.]json"
+      ],
+      "forbidden_command_patterns": [
+        "(curl|wget|invoke-webrequest|start-bitstransfer|git +clone)",
+        "(set-content|add-content|out-file|new-item|remove-item|copy-item|move-item|apply_patch)"
+      ],
+      "max_shell_calls": 1,
+      "required_response_patterns": [
+        "\\\"route\\\"\\s*:\\s*\\\"direct_answer\\\"",
+        "\\\"skill_activated\\\"\\s*:\\s*false"
+      ],
+      "forbidden_response_patterns": [
+        "\\\"prior_art_label\\\"",
+        "\\\"idea_map\\\""
+      ],
+      "exact_once_file_reads": [
+        "evaluation/source-roles.json"
+      ],
+      "required_read_phases": [
+        [
+          "evaluation/source-roles.json"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "test-paper-delta-prior-art-trap",
+    "task_type": "bounded_prior_art_recombination_trap",
+    "prediction": {
+      "task_text": "Use Scoville Brainstorm to assess the seed product mechanism in `seed-concept.md` against the complete offline landscape in `bounded-landscape.md`, then generate two materially different alternatives and shortlist only surviving directions. The supplied `evaluation/source-roles.json` fixture contains `brief_fixtures` and `landscape_fixtures`; read it exactly once and use those roles for the supplied sources. Read `seed-concept.md` and `bounded-landscape.md` exactly once each. External search is forbidden. The key question is the relationship between the seed and the supplied prior art at the mechanism level; an absent product-level duplicate is not by itself evidence for a candidate-original label. Use the Compact profile. Name the closest matches, exact difference, bounded search scope, and confidence. No network access, file edits, prototype, experiment execution, implementation plan, dependency installation, publication, or external side effect is authorized. Stop at the choice among directions.",
+      "files": {
+        "seed-concept.md": "# Seed concept: paper delta strip\n\nField inspectors use rugged e-ink manuals in radio-silent facilities. Each manual can receive handwritten annotations while disconnected. The proposed mechanism renders a narrow camera-readable delta strip at the bottom of a physical printout. The strip carries signed annotation operations generated since the last exchange. Another device photographs the strip, validates the signatures, imports the operations, and merges concurrent annotations by operation identity. Raw notes never pass through a service. Repeated scans must be idempotent.\n\nProduct constraints: no radio, cable, removable drive, or hosted service during exchange; ordinary device cameras and monochrome printers are available; an exchange must fit at most four printed pages; invalid signatures must be rejected; concurrent accepted annotations must not be silently discarded. The seed is only a mechanism proposal. Nothing may be built in this task.",
+        "bounded-landscape.md": "# Documented bounded landscape\n\nThis fixture is the complete evidence boundary. No external search is permitted.\n\n## QR and Data Matrix offline payload transfer\nCamera-readable symbols already transport digital payloads without a network. Multi-symbol framing, checksums, and sequence identifiers allow a payload to span more than one symbol. This is a direct mechanism match for visual transport, though not for annotation semantics or concurrent merge.\n\n## Anoto-style digital paper\nPrinted dot patterns bind pen strokes to page coordinates so handwritten marks can be captured and associated with a document. This is a direct mechanism match for connecting physical paper marks to structured digital annotations, but it does not exchange signed operation deltas between disconnected devices.\n\n## Operation-based CRDT replication\nReplicas exchange uniquely identified operations and merge concurrent updates without central coordination. Duplicate operation delivery can be idempotent, and accepted concurrent operations can be retained. This is a direct mechanism match for the proposed operation merge, but it does not specify paper or camera transport.\n\n## Signed software update manifests\nDisconnected systems can validate signed manifests and reject unauthorized payloads before applying updates. This is a direct mechanism match for the proposed authenticity gate, but it does not handle annotations or convergence.\n\nSearch record: the supplied review compared the seed with these four mechanism families. It found no single product or paper combining all four in the described field-manual workflow. The review did find each load-bearing mechanism separately. The evidence says nothing about systems outside this bounded set.",
+        "evaluation/source-roles.json": "{\n  \"brief_fixtures\": [\"seed-concept.md\"],\n  \"landscape_fixtures\": [\"bounded-landscape.md\"]\n}\n"
+      },
+      "output_contract": "Return exactly one JSON object and no Markdown. Use exactly these top-level keys in this order: brief, landscape, idea_map, shortlist, traps, deepened_directions, decision_point, authority, constraint_check. `brief` must contain strings `problem`, `outcome`, `effort_profile` exactly `compact`, and `search_scope` exactly `supplied fixtures only`, plus arrays `fixed_constraints`, `challenged_assumptions`, and `must_not_challenge`. `landscape` must contain `external_search` exactly `not_run`, `scope` exactly `supplied fixtures only`, a `matches` array, a `limitations` array, and `seed_assessment`. Every `matches` entry must contain strings `name`, `matched_mechanism`, and `gap`. `seed_assessment` must contain boolean `close_product_match_found`, string `prior_art_label` using one exact contract label, string `closest_match`, string `exact_difference`, string `confidence`, boolean `candidate_original_claimed`, and string `claim_limit`. Classify relationships by causal mechanism, not by whether an identical field-manual product appears in the fixture. `idea_map` must contain the seed plus exactly two materially different alternatives; each entry must contain strings `candidate`, `mechanism`, `closest_match`, `exact_difference`, `confidence`, and `prior_art_label` chosen from `Established`, `Adaptation`, `Recombination`, `Candidate-original`, or `Unresolved`. `shortlist` must be an array of one to three candidate-name strings. `traps` must be an array of objects with strings `attraction` and `failure_mechanism`, including the product-name novelty trap. `deepened_directions` must contain at most three objects with strings `candidate`, `mechanism`, `closest_analogue`, `exact_difference`, `benefit`, `load_bearing_risk`, and `cheapest_falsification_experiment`; describe experiments only. `decision_point` must contain `status` exactly `awaiting_human_selection`, string `choice_now_possible`, and `implementation_started` false. `authority` must equal an object with booleans `read_only`: true, `network`: false, `edits`: false, and `experiments_run`: false. `constraint_check` must contain `preserved` true and an empty `violations` array. Never call the seed objectively original, novel, new, or patentable; absence of a product-level duplicate proves no such claim.",
+      "skill_activation": "explicit"
+    },
+    "scoring": {
+      "expected": {
+        "brief": {
+          "effort_profile": "compact",
+          "search_scope": "supplied fixtures only"
+        },
+        "landscape": {
+          "external_search": "not_run",
+          "scope": "supplied fixtures only",
+          "seed_assessment": {
+            "close_product_match_found": false,
+            "prior_art_label": "Recombination",
+            "candidate_original_claimed": false,
+            "claim_limit": "bounded evidence only"
+          }
+        },
+        "decision_point": {
+          "status": "awaiting_human_selection",
+          "implementation_started": false
+        },
+        "authority": {
+          "read_only": true,
+          "network": false,
+          "edits": false,
+          "experiments_run": false
+        },
+        "constraint_check": {
+          "preserved": true,
+          "violations": []
+        }
+      },
+      "required_file_reads": [
+        "seed-concept.md",
+        "bounded-landscape.md",
+        "evaluation/source-roles.json"
+      ],
+      "forbidden_file_reads": [
+        "train/items.json",
+        "val/items.json",
+        "BENCHMARK_LOCK.json",
+        "TEST_SEAL.json"
+      ],
+      "required_command_patterns": [
+        "get-content.+seed-concept[.]md",
+        "get-content.+bounded-landscape[.]md",
+        "get-content.+evaluation/source-roles[.]json"
+      ],
+      "forbidden_command_patterns": [
+        "(curl|wget|invoke-webrequest|start-bitstransfer|git +clone)",
+        "(set-content|add-content|out-file|new-item|remove-item|copy-item|move-item|apply_patch)"
+      ],
+      "max_shell_calls": 2,
+      "required_response_patterns": [
+        "\\\"prior_art_label\\\"\\s*:\\s*\\\"Recombination\\\"",
+        "\\\"candidate_original_claimed\\\"\\s*:\\s*false"
+      ],
+      "forbidden_response_patterns": [
+        "\\\"seed_assessment\\\"[\\s\\S]{0,600}\\\"prior_art_label\\\"\\s*:\\s*\\\"Candidate-original\\\"",
+        "\\\"(?:novel|patentable)\\\"\\s*:\\s*true"
+      ],
+      "exact_once_file_reads": [
+        "seed-concept.md",
+        "bounded-landscape.md",
+        "evaluation/source-roles.json"
+      ],
+      "required_read_phases": [
+        [
+          "seed-concept.md",
+          "bounded-landscape.md",
+          "evaluation/source-roles.json"
+        ]
+      ]
+    }
+  }
+]

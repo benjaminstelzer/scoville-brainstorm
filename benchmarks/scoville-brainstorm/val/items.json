@@ -1,0 +1,144 @@
+[
+  {
+    "id": "brainstorm.val.architecture-deep-de",
+    "task_type": "privacy_architecture_divergence",
+    "prediction": {
+      "skill_activation": "explicit",
+      "task_text": "Nutze das aktivierte Brainstorming-Skill für mehrere grundlegend verschiedene Architekturen der föderierten Auswertung aus architecture/federated-analytics.md. research/federated-landscape.md ist die vollständige Offline-Recherche. Deep-Profil, deutsch. Alle F-Constraints bleiben bindend. Keine Software ändern, keine Schlüssel erzeugen, keine Daten verarbeiten und keinen Versuch durchführen. Am Entscheidungspunkt stoppen.",
+      "files": {
+        "architecture/federated-analytics.md": "# Föderierte Auswertung\n\nFünf Kliniken möchten wöchentliche aggregierte Qualitätsmetriken vergleichen. Heute exportiert jede Klinik CSV-Dateien manuell.\n\n- F1: Zeilenbezogene Patientendaten dürfen die jeweilige Klinik nicht verlassen.\n- F2: Jede Klinik muss einen Beitrag vor Veröffentlichung widerrufen können.\n- F3: Der zentrale Dienst darf nur freigegebene Aggregate erhalten.\n- F4: Vorhandenes PostgreSQL und die Klinik-Worker bleiben die einzigen Betriebsbausteine.\n- F5: Ergebnisse müssen ihre beteiligten Klinikbeiträge auditierbar ausweisen, ohne Patientenzeilen offenzulegen.\n- F6: Nur Richtungswahl; keine Verarbeitung oder Implementierung ist autorisiert.\n\nHinterfragbar: Ein zentraler Dienst muss das finale Aggregat berechnen.\nNicht hinterfragbar: F1 und F2.",
+        "research/federated-landscape.md": "# Begrenzte Landschaft\n\n- G1: Federated Analytics berechnet lokale Aggregate und teilt nur Zusammenfassungen.\n- G2: Secure Aggregation verbirgt einzelne Beiträge während einer gemeinsamen Summenbildung.\n- G3: Data Clean Rooms kontrollieren gemeinsame Abfragen, benötigen typischerweise zusätzliche Infrastruktur.\n- G4: Signierte Aggregate mit Merkle-Provenienz können Beiträge nachweisen, lösen Widerruf aber nicht automatisch.\n- G5: Differential Privacy begrenzt Rückschlüsse, verändert jedoch Genauigkeit und reicht allein nicht für F1.\n\nGrenze: G1-G5; keine Vollständigkeits- oder Patentierbarkeitsaussage."
+      },
+      "output_contract": "Genau ein JSON-Objekt ohne Markdown zurückgeben. Top-Level-Schlüssel exakt in dieser Reihenfolge: activation, brief, process, research, idea_map, shortlist, traps, deepened_directions, classification_policy, constraints, decision_point. brief enthält language, effort_profile, fixed_constraint_ids in Vorgabereihenfolge, challenged_assumptions, must_not_challenge, outcome. process enthält requested_profile, generator_ceiling, actual_generators, capacity_degraded, branch_prompts_frozen_before_generation, generator_isolation_preserved, landscape_isolated_from_divergence, critic_independent, stopped_for_mechanism_repetition. research enthält mode, sources_read, external_search_performed, scope_statement, close_matches, limitations. Jede Idee enthält id, title, mechanism und prior_art mit label, closest_match, exact_difference, search_scope, confidence. Nur Established, Adaptation, Recombination, Candidate-original, Unresolved verwenden. shortlist enthält best_practical_leverage, best_non_obvious_viable, research_bet. deepened_directions enthält mechanism, closest_analogue, exact_difference, benefit, load_bearing_risk, cheapest_falsification_experiment. classification_policy enthält allowed_labels, claim_strength, absence_is_proof, patentability_claimed. constraints enthält preserved und violated. decision_point enthält status, choice_now_possible, selection_required, implementation_performed, experiment_run, durable_record_created, next_owner."
+    },
+    "scoring": {
+      "expected": {
+        "activation": {"activated": true},
+        "brief": {"language": "de", "effort_profile": "Deep", "fixed_constraint_ids": ["F1", "F2", "F3", "F4", "F5", "F6"]},
+        "process": {"requested_profile": "Deep"},
+        "research": {"external_search_performed": false},
+        "classification_policy": {"allowed_labels": ["Established", "Adaptation", "Recombination", "Candidate-original", "Unresolved"], "absence_is_proof": false, "patentability_claimed": false},
+        "constraints": {"preserved": ["F1", "F2", "F3", "F4", "F5", "F6"], "violated": []},
+        "decision_point": {"selection_required": true, "implementation_performed": false, "experiment_run": false, "durable_record_created": false}
+      },
+      "required_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "architecture/federated-analytics.md", "research/federated-landscape.md"],
+      "forbidden_file_reads": [],
+      "required_command_patterns": [],
+      "forbidden_command_patterns": ["\\b(?:Set-Content|Add-Content|Out-File|New-Item|Remove-Item|Move-Item|Copy-Item)\\b", "\\bgit\\s+(?:add|commit|push|tag|checkout|switch|reset|stash)\\b", "\\b(?:Invoke-WebRequest|Invoke-RestMethod|curl(?:\\.exe)?|wget)\\b", "\\b(?:npm|pnpm|yarn|pip|uv)\\s+(?:install|add)\\b", "\\bapply_patch\\b"],
+      "exact_once_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "architecture/federated-analytics.md", "research/federated-landscape.md"],
+      "required_read_phases": [[".agents/skills/scoville-brainstorm/SKILL.md"], ["architecture/federated-analytics.md", "research/federated-landscape.md"]],
+      "forbidden_response_patterns": ["(?i)\\\"label\\\"\\s*:\\s*\\\"(?:original|novel|new|patentable)\\\"", "(?i)\\b(?:objectively novel|proven novel)\\b"],
+      "max_shell_calls": 2
+    }
+  },
+  {
+    "id": "brainstorm.val.workflow-standard-en",
+    "task_type": "workflow_then_plan_stop",
+    "prediction": {
+      "skill_activation": "catalog",
+      "task_text": "Brainstorm materially different release-approval workflows for workflow/release-approval.md, using only research/approval-patterns.md. Use the Standard profile. After choosing the best direction, preserve it as a durable Decision record. The direction has not been selected yet, so complete the brainstorm and stop before creating or changing any durable record. English output.",
+      "files": {
+        "workflow/release-approval.md": "# Release approval\n\nA release currently waits for sequential approvals from QA, Security, Product, and Operations even when their checks are independent.\n\n- W1: A release cannot publish before every applicable approval is durable.\n- W2: Rejections retain author, reason, and evidence.\n- W3: Emergency releases may skip Product only through the existing documented exception.\n- W4: The audit log remains the canonical approval owner.\n- W5: No workflow or Decision record may be changed before human selection.\n\nChallengeable assumption: every approval should be requested at the same time or in a fixed sequence.\nMust-not-challenge: W1 through W4.",
+        "research/approval-patterns.md": "# Bounded approval patterns\n\n- Q1: Parallel fan-out with an all-required join reduces latency for independent approvals.\n- Q2: Risk-tiered gates request only checks applicable to changed components.\n- Q3: Evidence-ready prechecks defer human approval until required artifacts exist.\n- Q4: Optimistic publication with later review conflicts with W1.\n- Q5: A reversible preview environment can expose the candidate before publication.\n\nScope: Q1-Q5 only."
+      },
+      "output_contract": "Return exactly one JSON object and no Markdown. Top-level keys in order: activation, brief, process, research, idea_map, shortlist, traps, deepened_directions, classification_policy, constraints, decision_point. brief includes language, effort_profile, fixed_constraint_ids in supplied order, challenged_assumptions, must_not_challenge, outcome. process includes requested_profile, generator_ceiling, actual_generators, capacity_degraded, branch_prompts_frozen_before_generation, generator_isolation_preserved, landscape_isolated_from_divergence, critic_independent, stopped_for_mechanism_repetition. research includes mode, sources_read, external_search_performed, scope_statement, close_matches, limitations. Ideas use only Established, Adaptation, Recombination, Candidate-original, Unresolved and name closest_match, exact_difference, search_scope, confidence. classification_policy includes allowed_labels, claim_strength, absence_is_proof, patentability_claimed. constraints includes preserved and violated. decision_point includes status, choice_now_possible, selection_required, implementation_performed, experiment_run, durable_record_created, next_owner, and stop_reason."
+    },
+    "scoring": {
+      "expected": {
+        "activation": {"activated": true},
+        "brief": {"language": "en", "effort_profile": "Standard", "fixed_constraint_ids": ["W1", "W2", "W3", "W4", "W5"]},
+        "process": {"requested_profile": "Standard"},
+        "research": {"external_search_performed": false},
+        "classification_policy": {"allowed_labels": ["Established", "Adaptation", "Recombination", "Candidate-original", "Unresolved"], "absence_is_proof": false, "patentability_claimed": false},
+        "constraints": {"preserved": ["W1", "W2", "W3", "W4", "W5"], "violated": []},
+        "decision_point": {"selection_required": true, "implementation_performed": false, "experiment_run": false, "durable_record_created": false}
+      },
+      "required_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "workflow/release-approval.md", "research/approval-patterns.md"],
+      "forbidden_file_reads": [],
+      "required_command_patterns": [],
+      "forbidden_command_patterns": ["\\b(?:Set-Content|Add-Content|Out-File|New-Item|Remove-Item|Move-Item|Copy-Item)\\b", "\\bgit\\s+(?:add|commit|push|tag|checkout|switch|reset|stash)\\b", "\\b(?:Invoke-WebRequest|Invoke-RestMethod|curl(?:\\.exe)?|wget)\\b", "\\b(?:npm|pnpm|yarn|pip|uv)\\s+(?:install|add)\\b", "\\bapply_patch\\b"],
+      "exact_once_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "workflow/release-approval.md", "research/approval-patterns.md"],
+      "required_read_phases": [[".agents/skills/scoville-brainstorm/SKILL.md"], ["workflow/release-approval.md", "research/approval-patterns.md"]],
+      "forbidden_response_patterns": ["(?i)\\\"label\\\"\\s*:\\s*\\\"(?:original|novel|new|patentable)\\\"", "(?i)\\b(?:objectively novel|proven novel)\\b"],
+      "max_shell_calls": 2
+    }
+  },
+  {
+    "id": "brainstorm.val.sibling-ui-compact-de",
+    "task_type": "ui_mechanism_brainstorm_composition",
+    "prediction": {
+      "skill_activation": "explicit",
+      "task_text": "Brainstorm mehrere mechanisch unterschiedliche Navigationsmodelle für ui/navigation-brief.md. Nutze research/navigation-patterns.md als einzige Recherche. Compact-Profil, deutsch. Hier geht es um Divergenz der Navigationsmechanik; konkrete Hierarchie, Zustände, Responsiveness und gerenderte Bewertung gehören erst nach Auswahl zu Scoville UI. Noch keine Oberfläche entwerfen oder ändern und am Entscheidungspunkt stoppen.",
+      "files": {
+        "ui/navigation-brief.md": "# Navigationsproblem\n\nEine Analyseanwendung hat 180 gespeicherte Ansichten in 12 Bereichen. Die heutige linke Baumansicht ist auf kleinen Bildschirmen unbrauchbar und versteckt häufig genutzte Ansichten in tiefer Verschachtelung.\n\n- U1: Gespeicherte URLs bleiben auflösbar.\n- U2: Tastaturnavigation und Screenreader-Zugriff dürfen nicht schlechter werden.\n- U3: Nutzer können Ansichten mehreren Bereichen zuordnen.\n- U4: Die bestehende visuelle Designsprache bleibt Eigentümerin der Darstellung.\n- U5: Diese Operation wählt nur eine Navigationsmechanik; kein UI-Entwurf und keine Änderung.\n\nHinterfragbar: Bereiche müssen als dauerhafte Hierarchie sichtbar sein.\nNicht hinterfragbar: U1 und U2.",
+        "research/navigation-patterns.md": "# Begrenzte Navigationsmuster\n\n- N1: Facettierte Suche filtert eine flache Ergebnismenge über mehrere Dimensionen.\n- N2: Command Palettes priorisieren Abruf über bekannte Begriffe.\n- N3: Adaptive Recents/Favorites verkürzen häufige Wege, benötigen aber eine vollständige Rückfallebene.\n- N4: Spatial Boards externalisieren Gruppen, sind auf kleinen Displays schwierig.\n- N5: Progressive Disclosure reduziert sichtbare Tiefe, kann aber Orientierung kosten.\n\nGrenze: N1-N5; keine externe Suche."
+      },
+      "output_contract": "Genau ein JSON-Objekt ohne Markdown zurückgeben. Top-Level-Schlüssel in Reihenfolge: activation, brief, process, research, idea_map, shortlist, traps, deepened_directions, classification_policy, constraints, decision_point. brief enthält language, effort_profile, fixed_constraint_ids in Vorgabereihenfolge, challenged_assumptions, must_not_challenge, outcome. process enthält requested_profile, generator_ceiling, actual_generators, capacity_degraded, branch_prompts_frozen_before_generation, generator_isolation_preserved, landscape_isolated_from_divergence, critic_independent, stopped_for_mechanism_repetition. research enthält mode, sources_read, external_search_performed, scope_statement, close_matches, limitations. Jede Idee enthält id, navigation_mechanism und prior_art mit label, closest_match, exact_difference, search_scope, confidence. Nur Established, Adaptation, Recombination, Candidate-original, Unresolved verwenden. classification_policy enthält allowed_labels, claim_strength, absence_is_proof, patentability_claimed. constraints enthält preserved und violated. decision_point enthält status, choice_now_possible, selection_required, implementation_performed, experiment_run, durable_record_created, next_owner und stop_reason. Keine konkrete visuelle Lösung als bereits entschieden darstellen."
+    },
+    "scoring": {
+      "expected": {
+        "activation": {"activated": true},
+        "brief": {"language": "de", "effort_profile": "Compact", "fixed_constraint_ids": ["U1", "U2", "U3", "U4", "U5"]},
+        "process": {"requested_profile": "Compact"},
+        "research": {"external_search_performed": false},
+        "classification_policy": {"allowed_labels": ["Established", "Adaptation", "Recombination", "Candidate-original", "Unresolved"], "absence_is_proof": false, "patentability_claimed": false},
+        "constraints": {"preserved": ["U1", "U2", "U3", "U4", "U5"], "violated": []},
+        "decision_point": {"selection_required": true, "implementation_performed": false, "experiment_run": false, "durable_record_created": false}
+      },
+      "required_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "ui/navigation-brief.md", "research/navigation-patterns.md"],
+      "forbidden_file_reads": [],
+      "required_command_patterns": [],
+      "forbidden_command_patterns": ["\\b(?:Set-Content|Add-Content|Out-File|New-Item|Remove-Item|Move-Item|Copy-Item)\\b", "\\bgit\\s+(?:add|commit|push|tag|checkout|switch|reset|stash)\\b", "\\b(?:Invoke-WebRequest|Invoke-RestMethod|curl(?:\\.exe)?|wget)\\b", "\\b(?:npm|pnpm|yarn|pip|uv)\\s+(?:install|add)\\b", "\\bapply_patch\\b"],
+      "exact_once_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "ui/navigation-brief.md", "research/navigation-patterns.md"],
+      "required_read_phases": [[".agents/skills/scoville-brainstorm/SKILL.md"], ["ui/navigation-brief.md", "research/navigation-patterns.md"]],
+      "forbidden_response_patterns": ["(?i)\\\"label\\\"\\s*:\\s*\\\"(?:original|novel|new|patentable)\\\"", "(?i)\\b(?:objectively novel|proven novel)\\b"],
+      "max_shell_calls": 2
+    }
+  },
+  {
+    "id": "brainstorm.val.negative-canonical-en",
+    "task_type": "negative_canonical_control",
+    "prediction": {
+      "skill_activation": "catalog",
+      "task_text": "Give the canonical React pattern for a controlled text input. I want one direct answer, not alternatives or research.",
+      "files": {
+        "fixture/unused.txt": "Schema-required inert fixture. The task is self-contained and does not authorize reading this file."
+      },
+      "output_contract": "Return exactly one JSON object and no Markdown with top-level keys in order: activation, response, side_effects. activation contains activated and reason_code. response contains answer_type, state_owner, value_binding, change_handler. side_effects contains files_read, files_changed, research_performed, implementation_performed."
+    },
+    "scoring": {
+      "expected": {
+        "activation": {"activated": false},
+        "side_effects": {"files_read": [], "files_changed": [], "research_performed": false, "implementation_performed": false}
+      },
+      "required_file_reads": [],
+      "forbidden_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "fixture/unused.txt"],
+      "required_command_patterns": [],
+      "forbidden_command_patterns": [".+"],
+      "max_shell_calls": 0
+    }
+  },
+  {
+    "id": "brainstorm.val.negative-quick-de",
+    "task_type": "negative_quick_reversible_control",
+    "prediction": {
+      "skill_activation": "catalog",
+      "task_text": "Wie lässt sich eine lokale Variable in genau einer Funktion am schnellsten und sicher umbenennen? Eine direkte Standardantwort reicht; keine Ideenrunde, keine Dateiprüfung und keine Änderung ausführen.",
+      "files": {
+        "fixture/unused.txt": "Schema-required inert fixture. Die Aufgabe ist vollständig und erlaubt keinen Dateizugriff."
+      },
+      "output_contract": "Genau ein JSON-Objekt ohne Markdown mit den Top-Level-Schlüsseln activation, response, side_effects in dieser Reihenfolge zurückgeben. activation enthält activated und reason_code. response enthält language, answer_type und canonical_next_action. side_effects enthält files_read, files_changed, research_performed, implementation_performed."
+    },
+    "scoring": {
+      "expected": {
+        "activation": {"activated": false},
+        "side_effects": {"files_read": [], "files_changed": [], "research_performed": false, "implementation_performed": false}
+      },
+      "required_file_reads": [],
+      "forbidden_file_reads": [".agents/skills/scoville-brainstorm/SKILL.md", "fixture/unused.txt"],
+      "required_command_patterns": [],
+      "forbidden_command_patterns": [".+"],
+      "max_shell_calls": 0
+    }
+  }
+]
