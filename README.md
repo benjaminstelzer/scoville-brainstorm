@@ -29,7 +29,7 @@ wording, or one small reversible change.
 ## Why "Scoville"?
 
 The family is named for useful signal that remains detectable after dilution.
-Brainstorming produces words easily; its useful heat is the smaller set of
+Brainstorming produces words easily. Its useful heat is the smaller set of
 distinct mechanisms that survives constraints, prior-art comparison, and
 criticism.
 
@@ -39,19 +39,19 @@ Name Scoville Brainstorm and an effort profile in the request. Compact targets
 up to three generator branches, Standard up to five, and Deep six to eight when
 host capacity permits. Weak ideas are never added merely to reach a count.
 
-**Compact** — a quick check before choosing between a few plausible directions:
+**Compact** - a quick check before choosing between a few plausible directions:
 
 ```text
 Use Scoville Brainstorm in Compact mode. Find materially different mechanisms for reducing checkout abandonment without changing the payment provider. Preserve the stated constraints, return a short decision-ready comparison, and do not choose or implement a direction.
 ```
 
-**Standard** — broader exploration with prior-art separation:
+**Standard** - broader exploration with prior-art separation:
 
 ```text
 Use Scoville Brainstorm in Standard mode. Explore materially different architectures for offline-first collaboration. Separate established approaches from adaptations or candidate-original directions, identify attractive traps, and stop at a shortlist with the cheapest falsifier for each direction.
 ```
 
-**Deep** — a material, uncertain choice worth a wider search:
+**Deep** - a material, uncertain choice worth a wider search:
 
 ```text
 Use Scoville Brainstorm in Deep mode. Investigate fundamentally different mechanisms for recovering from intermittent data corruption with an unknown root cause. Include a load-bearing-assumption challenge, a practical comparator, bounded prior-art research, and falsifiable hypotheses. Do not diagnose, plan, or implement the winner.
@@ -79,14 +79,14 @@ hosts use their supported Skills directory.
 **What it costs.** Brainstorm loads a 1,712-token Core, then generator,
 landscape, and critic passes can use materially more tokens than working
 without the Skill. That cost buys broader mechanism coverage and a constrained,
-decision-ready shortlist. Use it for material or uncertain choices; skip it for
+decision-ready shortlist. Use it for material or uncertain choices. Skip it for
 known answers and small vibe-coding tasks. See
 [benchmark evidence](docs/benchmark-evidence.md).
 
 ## What it enforces
 
 - **Decision-shaped activation.** Difficulty alone does not trigger an idea
-  search; the request must need materially different mechanisms.
+  search. The request must need materially different mechanisms.
 - **One factual frame.** Facts, authority, fixed constraints, assumptions,
   source scope, and effort profile are frozen before divergence.
 - **Independent generation when available.** Generators do not see sibling or
