@@ -1,10 +1,9 @@
 ---
 format_version: 1
 id: PLAN-0001
-status: active
+status: completed
 created: 2026-08-11
 updated: 2026-08-11
-current_item: W-007
 ---
 
 # Build and qualify Scoville Brainstorm
@@ -83,7 +82,6 @@ Steps:
 4. Optimize with current SkillOpt and the local reducer method while preserving raw A/B evidence and contamination boundaries.
 5. Select the lowest-cost candidate that passes every reliability and usefulness gate, or retain the qualified control when no reduction qualifies.
 Evidence: [docs/evidence/w004-open-diagnostics.md records the reliability and harness corrections; exact final bytes passed 39/39 repeated open semantic cases and 36/36 description-only activation cases; the live multi-agent integration preserved isolated generators, landscape, and independent criticism; Microsoft SkillOpt ba820b500f9da96685cf2780c7dc85ed4eb6563e ran one conservative Sol 5.6 xhigh/Terra 5.6 Medium reduction step, rejected its proposed step, and retained the 1,712-token reliability control byte-for-byte; the opaque Test remained unopened and unexecuted]
-Next action: Seal and execute the one-shot opaque Test against the unchanged reliability control.
 
 ### W-005 Qualify the frozen candidate on unseen tasks
 Status: done
@@ -99,7 +97,6 @@ Steps:
 4. Adjudicate only documented benchmark or infrastructure defects without changing raw results or relabeling real Skill failures.
 5. Produce the qualification report and either retain the qualified package or return to a newly separated development cycle with an entirely new future Test split.
 Evidence: [one-shot gate SHA256 74CA91225D69E66B781F8399AF4DEE21ABE163540E536E8C269D7375A3BB8149 and preflight SHA256 C68BD31B5679FC6F2E452D899A88BF72AD279F5FBF81D6D5275F6546D9E8CBA1 bound the exact 144590B8D3804945D9181C08DBEB5F71286CF76896415FA2AECC687560EAD40B Skill; one fresh Terra 5.6 Medium agent consumed the gate once with no retry or remint; the outer observer timed out with exit 124 while the original process remained alive and completed all four cases plus its terminal summary; raw score 2/4 preserved; two benchmark-contract contradictions were hash-bound and adjudicated without changing Gold or results; Skill score 4/4 with zero Skill failures; TEST_ADJUDICATED_RESULT.json SHA256 673C212C6D47E4C927D365DCA9BADC5F7BD82B2A30F8C340B1C8A83DB61304C6]
-Next action: Build factual public documentation and install the unchanged qualified package locally.
 
 ### W-006 Align documentation, local installations, and release readiness
 Status: done
@@ -115,10 +112,9 @@ Steps:
 4. Run isolated activation, negative, cost-profile, and sibling-composition checks on both hosts.
 5. Prepare the clean release diff and report the remaining external publication actions for explicit authorization.
 Evidence: [README SHA256 6D2CA2EEEFB3DE73A286CF29093F7B99DD2C579CC2471D6B15624B9076BD995B contains the minimum executor, cost boundary, concise Status, family ownership, and no Verify-it-works section; docs/benchmark-evidence.md SHA256 B546C3B5BD9B8CCF0074F5A836C3E5C2C9F3584DC0F01B8A120F4E0501CF81B8 preserves raw and Skill scores, token measures, hashes, and limits; docs/optimization-runs.md SHA256 C04404F3F9EB5D9EAB4F03D7DB2FBE828D83814589672AD3484CE2BA42E76538 records 182 runs and 584 benchmark case executions; docs/evidence/w006-installed-host-smoke.md SHA256 2BF8821AD2FE1512F3A8D59B6220D89166D2FCD0741E1FFDE1E6166B55803BDD records the local copies and Claude checks; Skill Creator validation passed; 27 Markdown files have zero broken relative links; Codex and Claude each contain exactly one four-file scoville-brainstorm package byte-identical to Skill SHA256 144590B8D3804945D9181C08DBEB5F71286CF76896415FA2AECC687560EAD40B; Claude Code 2.1.220 passed one explicit Compact positive and one canonical-answer negative using the opus alias resolved to Claude Opus 5; no remote, sibling, profile, commit, tag, or release state changed]
-Next action: Present the local release candidate and wait for explicit publication scope and authorization.
 
 ### W-007 Publish the qualified Scoville sibling
-Status: in_progress
+Status: done
 Depends on: [W-006]
 Blocked by: []
 Decisions: [ADR-0001, ADR-0002]
@@ -130,5 +126,4 @@ Steps:
 3. Push main, create the immutable tag and GitHub Release, and verify their shared commit.
 4. Publish only the authorized sibling and profile updates with their own verified releases where required.
 5. Reconcile local installations and remote state, complete the Plan from observed evidence, and push one Plan-closure commit without moving the immutable release tag.
-Evidence: []
-Next action: Update the canonical release surfaces, commit the verified tree, create `benjaminstelzer/scoville-brainstorm`, and publish v1.0.0.
+Evidence: [qualified Skill SHA256 144590B8D3804945D9181C08DBEB5F71286CF76896415FA2AECC687560EAD40B remained byte-identical in the repository and the Codex and Claude installations; release commit 08F7D2E7CFE3E8ABB6AA98408CB958AF3274FE8C is published at https://github.com/benjaminstelzer/scoville-brainstorm and immutable tag and normal GitHub Release v1.0.0 point to that commit; Plan v1.2.6 commit FBCE10B1F4F0430259CD84C480CA070FCCA4F1AF, Code v1.0.10 commit D2EF66C42CBC424B1F3F7A97BB085C50CA950B45, UI v1.0.10 commit 7CC9C6E4305D63D75EB6968514405F6F011E3432, Scribe v1.0.10 commit 77C98D656058BDD147A7CF349EC2994C4D485DA5, and Handoff v2.0.1 commit 3989E52698CDF125DAE9C9A89C7E4229D134FE15 are published with normal GitHub Releases; profile commit DB0B5C7359F5FAC54B2DABDB266F5A5C5A2DE408 adds Brainstorm; GitHub exposes exactly the six Scoville repositories as profile pins; remote main branches, release tags, releases, README blobs, public Brainstorm metadata, and all Codex and Claude package trees passed the final verification]
