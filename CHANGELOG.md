@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-08-19: Public validation wording (v1.1.2)
+
+### Changed
+
+- Removed external model-review approval from the public Status and release
+  history.
+- Kept the measured qualification results, evidence links, Skill package, and
+  behavior unchanged.
+
+### Validation
+
+- README and Changelog no longer publish external approval as completion
+  evidence.
+- The unchanged Agent Skill package passes canonical validation.
+
 ## 2026-08-19: Release-package provenance (v1.1.1)
 
 ### Fixed
@@ -45,8 +60,6 @@
 - The fresh three-case holdout produced 1/3 raw and 3/3 adjudicated Skill
   results; two frozen benchmark-contract defects were retained without retry,
   Gold changes, or candidate changes.
-- Fable 5 High returned `READY` and independently confirmed the Test
-  adjudication.
 
 ## 2026-08-11: Concrete slop examples (v1.0.3)
 

@@ -152,8 +152,7 @@ three-case holdout produced **1/3 raw** and **3/3 adjudicated Skill** results.
 The two raw failures were frozen benchmark-contract defects - one contradicted
 its own Boolean output type, the other required an undisclosed mode string and
 exact idea count. Neither justified changing the candidate, retrying the run,
-or rewriting Gold. Fable 5 High independently confirmed the adjudication and
-returned `READY` on the implementation review.
+or rewriting Gold.
 
 The earlier qualification history remains intact: 182 optimization and
 evaluation runs, 584 benchmark case executions, 43/43 semantic cases, 36/36
