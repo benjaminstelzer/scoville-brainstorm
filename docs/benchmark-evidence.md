@@ -8,9 +8,15 @@ performed diagnosis and the final conservative SkillOpt analysis.
 ## v1.1.0 composition qualification
 
 The v1.1.0 package adds one conditionally loaded Research-composition reference
-without changing standalone landscape behavior. The exact five-file package
-SHA-256 is
+without changing standalone landscape behavior. The evaluated Windows-worktree
+package SHA-256 is
 `FC204947ED837424B24EB2067491D2DED3126381D952EBDEAED55D3765B06D2A`.
+The canonical five-file GitHub tag package SHA-256 is
+`A315FD4E93BB1453E9104E9BD367AD52AB8803BF4F67C23B2936235E1088A487`.
+The sole raw difference is CRLF versus LF in the unchanged
+`agents/openai.yaml`; `SKILL.md` and the composition reference are raw
+byte-identical. v1.1.1 records that boundary and adds LF normalization without
+changing Skill behavior.
 
 The candidate passed 6/6 open Validation cases: the new explicit-combined
 topology plus five historical standalone, activation, constraint, and stop

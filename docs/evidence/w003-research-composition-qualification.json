@@ -1,7 +1,15 @@
 {
   "schema_version": 1,
   "date": "2026-08-19",
-  "brainstorm_package_sha256": "fc204947ed837424b24eb2067491d2ded3126381d952ebdeaed55d3765b06d2a",
+  "brainstorm_evaluated_worktree_package_sha256": "fc204947ed837424b24eb2067491d2ded3126381d952ebdeaed55d3765b06d2a",
+  "brainstorm_release_package_sha256": "a315fd4e93bb1453e9104e9bd367ad52ab8803bf4f67c23b2936235e1088a487",
+  "release_package_difference": {
+    "path": "agents/openai.yaml",
+    "evaluated_line_endings": "CRLF",
+    "release_line_endings": "LF",
+    "normalized_text_equal": true,
+    "skill_instructions_changed": false
+  },
   "research_package_sha256": "2078a61307a7055ce924e5e6db0d2ae9e959b37d769ea49f4fc1f4aff9e8c262",
   "benchmark_lock_sha256": "574fb7c0df508c218d9bfeb6ce1c911a16b1031c337acc1f29980d808822ed4d",
   "test_seal_sha256": "d29ed9246fb9c56b6a09ef018d21b04c62ff376252de5443dde3ce9ba0c2016d",

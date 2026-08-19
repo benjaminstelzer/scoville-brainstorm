@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-08-19: Release-package provenance (v1.1.1)
+
+### Fixed
+
+- Distinguished the evaluated Windows-worktree package hash from the canonical
+  GitHub tag-package hash after Git normalized three CRLF line endings in the
+  unchanged `agents/openai.yaml` metadata file.
+- Added repository-wide LF normalization for future release checkouts.
+- Kept `SKILL.md`, the Research-composition reference, behavior, and qualified
+  results unchanged.
+
+### Validation
+
+- Both the evaluated worktree and downloaded tag package passed Agent Skill
+  validation.
+- `SKILL.md`, `THIRD_PARTY_NOTICES.md`, `LICENSES/ADHD-MIT.txt`, and
+  `references/research-composition.md` were raw byte-identical.
+- The downloaded five-file tag package has canonical SHA-256
+  `a315fd4e93bb1453e9104e9bd367ad52ab8803bf4f67c23b2936235e1088a487`.
+- No model-behavior test was repeated because no Skill instruction or metadata
+  value changed.
+
 ## 2026-08-19: Scoville Brainstorm v1.1.0
 
 ### Added

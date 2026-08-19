@@ -76,5 +76,5 @@ Steps:
 2. Publish one reviewed release without changing Research.
 3. Synchronize and verify Codex and Claude installations.
 4. Complete the Plan through a closure commit that does not move the release tag.
-Evidence: [User explicitly authorized publication and local Codex and Claude installation on 2026-08-19, v1.1.0 README and changelog and benchmark evidence are prepared]
-Next action: Run final release validation and inspect the complete v1.1.0 release diff before committing.
+Evidence: [User explicitly authorized publication and local Codex and Claude installation on 2026-08-19, v1.1.0 release commit a02a95438a03c65dfa1a6f6c24e8db4b16be65c6 and tag are published, raw tag verification found only CRLF to LF normalization in unchanged agents/openai.yaml metadata]
+Next action: Publish the v1.1.1 provenance correction and install its exact tag package to Codex and Claude.
