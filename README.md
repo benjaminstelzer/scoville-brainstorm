@@ -57,6 +57,13 @@ Use Scoville Brainstorm in Standard mode. Explore materially different architect
 Use Scoville Brainstorm in Deep mode. Investigate fundamentally different mechanisms for recovering from intermittent data corruption with an unknown root cause. Include a load-bearing-assumption challenge, a practical comparator, bounded prior-art research, and falsifiable hypotheses. Do not diagnose, plan, or implement the winner.
 ```
 
+**Combined with Research** - keep evidence depth without anchoring the idea
+generators:
+
+```text
+Use Scoville Brainstorm together with Scoville Research. Freeze the factual frame and generator prompts first. Let Research own one inspected prior-art landscape lane, keep that lane invisible to Brainstorm generators until convergence, and return a mechanism-level shortlist without implementing it.
+```
+
 Explicit `$scoville-brainstorm` invocation also works on hosts that support
 named Skill invocation.
 
@@ -76,7 +83,7 @@ The final path must end in
 `~/.claude/skills/` globally or `.claude/skills/` inside one project. Other
 hosts use their supported Skills directory.
 
-**What it costs.** Brainstorm loads a 1,712-token Core, then generator,
+**What it costs.** Brainstorm loads a 1,977-token Core, then generator,
 landscape, and critic passes can use materially more tokens than working
 without the Skill. That cost buys broader mechanism coverage and a constrained,
 decision-ready shortlist. Use it for material or uncertain choices. Skip it for
@@ -91,6 +98,9 @@ known answers and small vibe-coding tasks. See
   source scope, and effort profile are frozen before divergence.
 - **Independent generation when available.** Generators do not see sibling or
   landscape output. A single-agent fallback is labeled by its real capacity.
+- **One landscape owner in combined mode.** Research replaces the native
+  Brainstorm landscape agent when both Skills are explicitly requested; it
+  never becomes a standalone dependency.
 - **Mechanisms over paraphrases.** Convergence merges surface variants and
   rejects unsupported or constraint-breaking directions.
 - **Calibrated originality.** Evidence labels describe only the documented,
@@ -107,7 +117,12 @@ uses isolated generators and a separate landscape pass when the host supports
 them, clusters ideas by mechanism, applies independent criticism, and returns
 at most three distinct directions (two in Compact). With no agent delegation,
 one consolidated pass follows the same constraints without claiming isolation.
-The Skill installs no executable software and requires no network service.
+
+In explicit combined mode, Research owns the only landscape lane. Brainstorm
+freezes and runs its generators without that result, receives the inspected
+landscape only after collection, and then converges by mechanism. Outside that
+mode the native Brainstorm landscape remains unchanged. The Skill installs no
+executable software and requires no network service.
 
 ## Scoville family
 
@@ -131,14 +146,21 @@ needs:
 
 ## Status
 
-A reliability-first extension of
-[Microsoft SkillOpt](https://github.com/microsoft/SkillOpt), combined with
-SkillReducer-style analysis, produced **182 optimization and evaluation runs**
-and **584 benchmark case executions**. The final Skill passed **43/43 semantic
-cases**, **36/36 activation cases**, and **4/4 sealed holdout cases**. This is
-the first release, so no previous release provides a meaningful compression
-comparison. See [benchmark evidence](docs/benchmark-evidence.md).
-The [family run ledger](docs/optimization-history.md) shows the complete count.
+The v1.1.0 candidate passed **6/6 open Validation cases**: one new combined
+Research topology and five released standalone retention gates. Its fresh
+three-case holdout produced **1/3 raw** and **3/3 adjudicated Skill** results.
+The two raw failures were frozen benchmark-contract defects - one contradicted
+its own Boolean output type, the other required an undisclosed mode string and
+exact idea count. Neither justified changing the candidate, retrying the run,
+or rewriting Gold. Fable 5 High independently confirmed the adjudication and
+returned `READY` on the implementation review.
+
+The earlier qualification history remains intact: 182 optimization and
+evaluation runs, 584 benchmark case executions, 43/43 semantic cases, 36/36
+activation cases, and 4/4 v1.0 holdout cases. See the
+[v1.1 qualification manifest](docs/evidence/w003-research-composition-qualification.json),
+[benchmark evidence](docs/benchmark-evidence.md), and
+[family run ledger](docs/optimization-history.md).
 
 ## Sources
 

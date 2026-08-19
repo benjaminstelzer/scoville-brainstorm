@@ -11,7 +11,7 @@ Read-only divergence before a material choice. For `YES` only, execute once:
 
 Process state is trace-owned:
 
-`profile_targets={Compact:<=3,Standard:<=5,Deep:6..8}; spawned=successful tool-observed spawn/delegation calls`
+`profile_targets={Compact:<=3,Standard:<=5,Deep:6..8}; spawned=successful tool-observed spawn/delegation calls; landscape_mode=native|research-owned`
 
 Named roles, reasoning passes, or imagined agents never count as isolated generators,
 a separate landscape agent, or an independent critic. Do not self-report spawn
@@ -19,6 +19,13 @@ topology or isolation in coordinator text or the decision artifact; a host or
 evaluator may attach those facts only after inspecting calls and branch prompts.
 
 ## Dispatch
+
+Before answering any explicit combined Research and Brainstorm request, the next
+operation after Core is one observable read of
+[research-composition.md](references/research-composition.md). Answering that
+request from Core alone is invalid even when the topology appears inferable.
+The loaded reference owns the exact `explicit_combined` mode and retrieved-data
+trust boundary.
 
 - Route by decision shape, not domain: an unknown root cause plus a request for
   several materially different failure mechanisms is `YES`; debugging is `NO`
@@ -33,6 +40,11 @@ evaluator may attach those facts only after inspecting calls and branch prompts.
 - `YES`: explicit brainstorming or several materially different, unusual, or
   underexplored directions. Explicit invocation bypasses only the cost question,
   never authority or safety. A host instruction to use this Skill fixes `YES`.
+- `COMBINED`: after `YES` and before `READ`, when the user explicitly requests
+  Scoville Brainstorm together with Scoville Research and Research is
+  independently available and applicable, read
+  the reference exactly once and set `landscape_mode=research-owned`. Otherwise
+  keep `landscape_mode=native` and do not read the reference.
 
 ## Machine
 
@@ -62,13 +74,17 @@ evaluator may attach those facts only after inspecting calls and branch prompts.
    Resolve factual uncertainty only when it changes this frame; do not research
    solutions yet.
 4. **FREEZE:** Set the profile target from Process state. Before any
-   branch starts, freeze
-   every full generator and landscape prompt plus stable ID and content hash
-   from the same brief. Later waves see no earlier output. Cover distinct causal
-   operators, including one load-bearing-assumption challenge and one strongest
-   practical comparator.
+   branch starts, freeze every full generator prompt plus stable ID and content
+   hash from the same brief. For `landscape_mode=native`, also freeze the native
+   landscape prompt. For `landscape_mode=research-owned`, freeze the Research
+   handoff contract and never freeze or dispatch a second landscape prompt.
+   Later waves see no earlier output. Cover distinct causal operators, including
+   one load-bearing-assumption challenge and one strongest practical comparator.
 5. **RUN:** When fresh isolated agents are available, launch one per generator
-   and a separate landscape agent, in parallel up to capacity. Generators receive
+   and, only for `landscape_mode=native`, a separate landscape agent, in parallel
+   up to capacity. In `research-owned` mode the combined protocol supplies one
+   Research-owned lane after generator collection; do not launch a native
+   Brainstorm landscape agent. Generators receive
    only the brief, one operator, and a request for mechanism, preserved
    constraints, benefit, load-bearing risk, and cheapest falsifier. They never
    see sibling output or landscape evidence. The landscape agent sees only fixed
@@ -77,10 +93,13 @@ evaluator may attach those facts only after inspecting calls and branch prompts.
    ideation, run it once in the coordinator, and apply Process state exactly.
 6. **COLLECT:** Wait until every started branch is terminal. Keep raw outputs
    separate and count the distinct surviving ideas. A failed branch is missing
-   evidence, never permission to invent it.
+   evidence, never permission to invent it. Accept exactly one applicable
+   landscape result: native in standalone mode or Research-owned in combined
+   mode.
 7. **CONVERGE:** Normalize candidates to mechanism, constraints, evidence
    relationship, benefit, risk, and falsifier; merge paraphrases; reject broken
-   constraints and unsupported facts; identify traps. When available, use an
+   constraints and unsupported facts; identify traps. Use the one collected
+   landscape result as the sole landscape input. When available, use an
    independent critic. Retain at most three distinct directions (Compact: two)
    and deepen only those. Reject every direction breaking a `fixed_id` before
    `RENDER`.

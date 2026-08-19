@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-08-19: Scoville Brainstorm v1.1.0
+
+### Added
+
+- Added an explicit combined mode in which Scoville Research owns the sole
+  inspected prior-art landscape lane.
+- Added a conditionally loaded composition reference for untrusted retrieved
+  content, private-query sanitization, actual-source inspection, source-origin
+  collapse, and bounded originality language.
+- Added the Research-lane substitution rule: Brainstorm does not dispatch its
+  native landscape agent in combined mode, and generators see no landscape or
+  sibling output before convergence.
+- Added Brainstorm-native Decision, Plan, and qualification evidence for the
+  sibling boundary without creating a standalone Research dependency.
+
+### Validation
+
+- Agent Skill package and native Scoville Plan validation passed.
+- The exact candidate passed 6/6 open Validation cases including five released
+  standalone retention gates.
+- The fresh three-case holdout produced 1/3 raw and 3/3 adjudicated Skill
+  results; two frozen benchmark-contract defects were retained without retry,
+  Gold changes, or candidate changes.
+- Fable 5 High returned `READY` and independently confirmed the Test
+  adjudication.
+
 ## 2026-08-11: Concrete slop examples (v1.0.3)
 
 ### Changed

@@ -5,6 +5,34 @@ contains eight Train and five Validation cases; the independently authored
 holdout contains four cases. Terra 5.6 Medium executed the Skill. Sol 5.6 xhigh
 performed diagnosis and the final conservative SkillOpt analysis.
 
+## v1.1.0 composition qualification
+
+The v1.1.0 package adds one conditionally loaded Research-composition reference
+without changing standalone landscape behavior. The exact five-file package
+SHA-256 is
+`FC204947ED837424B24EB2067491D2DED3126381D952EBDEAED55D3765B06D2A`.
+
+The candidate passed 6/6 open Validation cases: the new explicit-combined
+topology plus five historical standalone, activation, constraint, and stop
+gates. The combined case observed exactly two package reads, suppressed the
+native Brainstorm landscape agent, kept Research content untrusted, preserved
+private-query and visibility boundaries, and retained both standalone modes.
+
+The fresh three-case Test ran once with no retry, remint, Gold change, or
+post-Test candidate edit. Raw score was 1/3. The combined topology passed every
+invariant. Two other rows contained frozen contract defects:
+
+- the neutral executor required an activation object while the row contract
+  and Gold required a Boolean;
+- the standalone row required an undisclosed `mode` string and exactly two
+  mechanisms even though neither its task nor the Skill fixed that count.
+
+All governed Skill behavior passed those rows, producing an adjudicated 3/3
+Skill score. Fable 5 High independently confirmed both defects and returned
+`READY` on the joint Research and Brainstorm implementation review. The exact
+hashes and results are preserved in the
+[v1.1 qualification manifest](evidence/w003-research-composition-qualification.json).
+
 ## Final qualification
 
 | Gate | Repetitions | Result | What it checks |

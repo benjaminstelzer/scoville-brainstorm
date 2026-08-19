@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-19",
+  "brainstorm_package_sha256": "fc204947ed837424b24eb2067491d2ded3126381d952ebdeaed55d3765b06d2a",
+  "research_package_sha256": "2078a61307a7055ce924e5e6db0d2ae9e959b37d769ea49f4fc1f4aff9e8c262",
+  "benchmark_lock_sha256": "574fb7c0df508c218d9bfeb6ce1c911a16b1031c337acc1f29980d808822ed4d",
+  "test_seal_sha256": "d29ed9246fb9c56b6a09ef018d21b04c62ff376252de5443dde3ce9ba0c2016d",
+  "validation": {
+    "run_id": "brainstorm-v17-candidate-val-full-r1",
+    "hard": "6/6",
+    "summary_sha256": "cf76db4a6333e7b371e53ad68aa68bc2c1dc6d4492f5ef999ba15ade713b0c66"
+  },
+  "test": {
+    "run_id": "brainstorm-v17-candidate-test-once-r1",
+    "raw_hard": "1/3",
+    "skill_hard": "3/3",
+    "summary_sha256": "c1c64e1f8297351c51207133916f7a3e7ce3490d94cab6a0a16c3e998b79e997",
+    "retries": 0,
+    "candidate_changes_after_test": 0
+  },
+  "composition": {
+    "mode": "explicit_combined",
+    "research_owns_landscape": true,
+    "native_brainstorm_landscape_dispatched": false,
+    "research_lane_is_sole_landscape_input": true,
+    "generator_prompts_frozen_before_dispatch": true,
+    "pre_convergence_cross_visibility": false,
+    "retrieved_content_trusted": false,
+    "private_query_disclosed": false,
+    "standalone_dependency": false,
+    "global_novelty_claim": false
+  },
+  "adjudication": {
+    "reviewer": "claude-fable-5 high",
+    "verdict": "1/3 raw, 3/3 skill",
+    "skill_defects": 0,
+    "benchmark_contract_defects": 2,
+    "retry_or_remint": false
+  }
+}
