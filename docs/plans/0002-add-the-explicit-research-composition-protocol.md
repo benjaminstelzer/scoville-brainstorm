@@ -1,10 +1,9 @@
 ---
 format_version: 1
 id: PLAN-0002
-status: active
+status: completed
 created: 2026-08-19
 updated: 2026-08-19
-current_item: W-004
 ---
 
 # Add the explicit Research composition protocol
@@ -65,7 +64,7 @@ Steps:
 Evidence: [exact Brainstorm package SHA256 fc204947ed837424b24eb2067491d2ded3126381d952ebdeaed55d3765b06d2a, open Validation passed 6/6 with every behavior and efficiency invariant, fresh Test ran once with zero retries and preserved raw score 1/3, the new explicit combined topology row passed every invariant, two frozen contract defects were adjudicated without changing Gold or candidate bytes, adjudicated Skill score is 3/3, Fable 5 High returned READY with zero implementation blockers, Fable follow-up confirmed 1/3 raw and 3/3 Skill, docs/evidence/w003-research-composition-qualification.json binds both sibling package hashes and benchmark evidence]
 
 ### W-004 Publish and synchronize Brainstorm after authorization
-Status: in_progress
+Status: done
 Depends on: [W-003]
 Blocked by: []
 Decisions: [ADR-0003]
@@ -76,5 +75,4 @@ Steps:
 2. Publish one reviewed release without changing Research.
 3. Synchronize and verify Codex and Claude installations.
 4. Complete the Plan through a closure commit that does not move the release tag.
-Evidence: [User explicitly authorized publication and local Codex and Claude installation on 2026-08-19, v1.1.0 release commit a02a95438a03c65dfa1a6f6c24e8db4b16be65c6 and tag are published, raw tag verification found only CRLF to LF normalization in unchanged agents/openai.yaml metadata]
-Next action: Publish the v1.1.1 provenance correction and install its exact tag package to Codex and Claude.
+Evidence: [User explicitly authorized publication and local Codex and Claude installation on 2026-08-19, v1.1.0 release commit a02a95438a03c65dfa1a6f6c24e8db4b16be65c6 and tag are published, raw tag verification found only CRLF to LF normalization in unchanged agents/openai.yaml metadata, v1.1.1 provenance commit 50c281dc5265e5aded7c8da25195a420b944dbb4 and immutable tag are published, GitHub Release https://github.com/benjaminstelzer/scoville-brainstorm/releases/tag/v1.1.1 is normal and non-draft, Codex and Claude installations each match all 5 v1.1.1 tag files with package SHA256 a315fd4e93bb1453e9104e9bd367ad52ab8803bf4f67c23b2936235e1088a487]
