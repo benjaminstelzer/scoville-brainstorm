@@ -11,7 +11,7 @@ from types import ModuleType
 from typing import Any
 
 
-PROJECT = Path(r"Z:\Projekts\AI\scoville-brainstorm")
+PROJECT = Path(__file__).resolve().parents[1]
 STUDIO = Path(r"C:\Users\benja\Desktop\kompressidee\skillopt-studio")
 BENCHMARK = PROJECT / "benchmarks" / "scoville-brainstorm-v2"
 RUNS = STUDIO / "runs" / "scoville-brainstorm-v2-baselines"

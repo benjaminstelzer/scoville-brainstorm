@@ -142,7 +142,7 @@ mode the native Brainstorm landscape remains unchanged. Research can require bro
 The Skill installs no executable software or dedicated network service.
 
 For repository structure and development tools, see
-[maintenance notes](docs/maintenance.md).
+[maintenance notes](development/docs/maintenance.md).
 
 ## Scoville family
 
@@ -179,8 +179,10 @@ freeze and generation-to-landscape sequence were not fully observable and
 required output sections were missing. This is bounded evidence, not a new
 qualification of the current package.
 
-See the [qualification manifest](docs/evidence/w003-research-composition-qualification.json)
-and [benchmark evidence](docs/benchmark-evidence.md).
+See the [qualification manifest](development/docs/evidence/w003-research-composition-qualification.json)
+and [benchmark evidence](development/docs/benchmark-evidence.md).
+
+Repository development and the current path mapping are in [development/](development/README.md).
 
 ## Sources
 
@@ -195,7 +197,7 @@ and [benchmark evidence](docs/benchmark-evidence.md).
   portable package contract.
 
 Research scope and pinned sources are listed in
-[the source map](docs/research/source-map.md).
+[the source map](development/docs/research/source-map.md).
 
 ## License
 
