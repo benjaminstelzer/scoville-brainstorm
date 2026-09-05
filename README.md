@@ -69,26 +69,39 @@ named Skill invocation.
 
 ## Install
 
-Use an Agent Skills-compatible host and Terra 5.6 Medium or a comparably
-capable executor such as Opus 4.8. Ask the agent to install:
+### Install this Skill
+
+In a local Codex or Claude Code session, ask:
 
 ```text
-Install this Agent Skill and refresh the available Skill list:
+Install this Agent Skill for all my projects from this exact package directory:
 https://github.com/benjaminstelzer/scoville-brainstorm/tree/main/scoville-brainstorm
-Keep the installed directory name scoville-brainstorm. Use Terra 5.6 Medium or a comparably capable executor such as Opus 4.8.
+Preserve existing customizations and ask before overwriting conflicting files.
+Report the installed location and whether the host discovers the Skill.
 ```
 
-The final path must end in
-`<skills-dir>/scoville-brainstorm/SKILL.md`. For Claude Code, use
-`~/.claude/skills/` globally or `.claude/skills/` inside one project. Other
-hosts use their supported Skills directory.
+The agent needs source access and permission to write to its personal Skills
+location. Manual fallback: [Codex Skills guide](https://learn.chatgpt.com/docs/build-skills)
+or [Claude Code Skills guide](https://code.claude.com/docs/en/skills).
 
-**What it costs.** Brainstorm loads a 1,977-token Core, then generator,
-landscape, and critic passes can use materially more tokens than working
-without the Skill. That cost buys broader mechanism coverage and a constrained,
-decision-ready shortlist. Use it for material or uncertain choices. Skip it for
-known answers and small vibe-coding tasks. See
-[benchmark evidence](docs/benchmark-evidence.md).
+Install only the linked package for the focused option.
+
+### Install the complete Scoville suite
+
+```text
+Install the complete Scoville Skill suite for all my projects. Fetch and install every exact package directory below:
+
+https://github.com/benjaminstelzer/scoville-brainstorm/tree/main/scoville-brainstorm
+https://github.com/benjaminstelzer/scoville-research/tree/main/scoville-research
+https://github.com/benjaminstelzer/scoville-code-anti-ai-slop/tree/main/scoville-code-anti-ai-slop
+https://github.com/benjaminstelzer/scoville-design-anti-ai-slop/tree/main/scoville-design-anti-ai-slop
+https://github.com/benjaminstelzer/scoville-ui-anti-ai-slop/tree/main/scoville-ui-anti-ai-slop
+https://github.com/benjaminstelzer/scoville-scribe-anti-ai-slop/tree/main/scoville-scribe-anti-ai-slop
+https://github.com/benjaminstelzer/scoville-plan/tree/main/scoville-plan
+https://github.com/benjaminstelzer/scoville-handoff/tree/main/scoville-handoff
+
+Preserve existing customizations and ask before overwriting conflicting files. Report every installed location and whether the host discovers each Skill.
+```
 
 ## What it enforces
 
@@ -99,7 +112,7 @@ known answers and small vibe-coding tasks. See
 - **Independent generation when available.** Generators do not see sibling or
   landscape output. A single-agent fallback is labeled by its real capacity.
 - **One landscape owner in combined mode.** Research replaces the native
-  Brainstorm landscape agent when both Skills are explicitly requested; it
+  Brainstorm landscape agent when both Skills are explicitly requested. It
   never becomes a standalone dependency.
 - **Mechanisms over paraphrases.** Convergence merges surface variants and
   rejects unsupported or constraint-breaking directions.
@@ -116,13 +129,20 @@ A request is routed as `NO`, `ASK`, or `YES`. A positive run freezes one brief,
 uses isolated generators and a separate landscape pass when the host supports
 them, clusters ideas by mechanism, applies independent criticism, and returns
 at most three distinct directions (two in Compact). With no agent delegation,
-one consolidated pass follows the same constraints without claiming isolation.
+one consolidated generation pass is followed by exactly one landscape pass,
+without claiming isolation or independent criticism. Truncated sources have a
+targeted recovery path before the frame is frozen. Observation labels remain
+facts, not automatic constraints. A known material source change after freezing
+requires visible reconciliation instead of silently mixing revisions.
 
 In explicit combined mode, Research owns the only landscape lane. Brainstorm
 freezes and runs its generators without that result, receives the inspected
 landscape only after collection, and then converges by mechanism. Outside that
-mode the native Brainstorm landscape remains unchanged. The Skill installs no
-executable software and requires no network service.
+mode the native Brainstorm landscape remains unchanged. Research can require browsing, and parallel branches use additional context.
+The Skill installs no executable software or dedicated network service.
+
+For repository structure and development tools, see
+[maintenance notes](docs/maintenance.md).
 
 ## Scoville family
 
@@ -149,20 +169,18 @@ needs:
 
 ## Status
 
-The v1.1.0 candidate passed **6/6 open Validation cases**: one new combined
-Research topology and five released standalone retention gates. Its fresh
-three-case holdout produced **1/3 raw** and **3/3 adjudicated Skill** results.
-The two raw failures were frozen benchmark-contract defects - one contradicted
-its own Boolean output type, the other required an undisclosed mode string and
-exact idea count. Neither justified changing the candidate, retrying the run,
-or rewriting Gold.
+The historical v1.1.0 candidate passed 6/6 open Validation cases. Its three-case
+holdout returned 1/3 raw and 3/3 adjudicated Skill results. The difference came
+from benchmark-contract defects, not retries or a repaired candidate.
 
-The earlier qualification history remains intact: 182 optimization and
-evaluation runs, 584 benchmark case executions, 43/43 semantic cases, 36/36
-activation cases, and 4/4 v1.0 holdout cases. See the
-[v1.1 qualification manifest](docs/evidence/w003-research-composition-qualification.json),
-[benchmark evidence](docs/benchmark-evidence.md), and
-[family run ledger](docs/optimization-history.md).
+Focused Terra Medium cases on 2026-09-05 respected the factual constraints and
+explicit read limit. The solo answer offered distinct mechanisms, but its
+freeze and generation-to-landscape sequence were not fully observable and
+required output sections were missing. This is bounded evidence, not a new
+qualification of the current package.
+
+See the [qualification manifest](docs/evidence/w003-research-composition-qualification.json)
+and [benchmark evidence](docs/benchmark-evidence.md).
 
 ## Sources
 
@@ -181,4 +199,4 @@ Research scope and pinned sources are listed in
 
 ## License
 
-MIT - see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).

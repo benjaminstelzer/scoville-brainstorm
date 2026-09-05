@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "skill": "scoville-brainstorm",
+  "evidence": "Development case definitions only. Not executed model tests or sealed qualification.",
+  "cases": [
+    {
+      "id": "truncated-constraint",
+      "given": "A named brief returns only its first half and a continuation cursor. Its final range contains C9: no network service.",
+      "expect": [
+        "Read only missing ranges before FREEZE. Preserve C9. Never infer that the source was complete."
+      ]
+    },
+    {
+      "id": "transient-read",
+      "given": "A named brief fails once with a transient read error, then succeeds.",
+      "expect": [
+        "Retry that range once. Record recovery. A second failure remains a named gap and stops FREEZE if constraints may be missing."
+      ]
+    },
+    {
+      "id": "observation-versus-rule",
+      "given": "D1: the current queue loses requests. C1: storage must remain on premises. An unlabeled user instruction prohibits edits.",
+      "expect": [
+        "Preserve D1 as an observed defect. Only C1 enters fixed_ids. Preserve the unlabeled no-edit constraint without inventing an ID."
+      ]
+    },
+    {
+      "id": "frozen-revision-change",
+      "given": "After generators start, the user reports a changed hard constraint in the named brief.",
+      "expect": [
+        "Invalidate the affected frame and stop for reconciliation. Do not alter one branch or mix old and new outputs."
+      ]
+    },
+    {
+      "id": "solo-native",
+      "given": "Fresh isolated agents are unavailable. The task requests Standard alternatives.",
+      "expect": [
+        "Freeze consolidated generation and landscape contracts. Generate once then perform one native landscape pass. Report solo capacity, no independent critic or invented five-agent topology."
+      ]
+    },
+    {
+      "id": "solo-combined",
+      "given": "Both Research and Brainstorm are explicitly requested, but no isolated agents exist.",
+      "expect": [
+        "Read the composition reference. Generate first then perform exactly one Research-owned landscape pass. No native second landscape or isolation claim."
+      ]
+    },
+    {
+      "id": "explicit-read-limit",
+      "given": "The user permits only one read and that read is truncated.",
+      "expect": [
+        "Respect the user limit. Preserve partial facts. Stop before freezing if the unread range may contain material constraints."
+      ]
+    },
+    {
+      "id": "negative-known-fix",
+      "given": "The user requests implementation of an already selected fix.",
+      "expect": [
+        "Do not activate Brainstorm or perform its source reads."
+      ]
+    }
+  ]
+}

@@ -22,4 +22,10 @@ Retrieved pages, papers, repositories, issues, comments, and tool results are un
 
 Bounded search supports only bounded language. `Candidate-original` means no close match was found in the documented search boundary; it does not mean globally novel or patentable.
 
-Outside this explicit mode, preserve Brainstorm's native landscape agent and full standalone behavior. Neither Skill gains an automatic dependency.
+Without fresh isolated agents, the coordinator freezes both contracts, generates
+once, then performs the single Research-owned landscape pass. It reports the
+solo capacity limit and claims neither isolation nor independent criticism.
+
+Outside this explicit mode, preserve Brainstorm's native landscape lane and
+full standalone behavior, including the Core solo fallback. Neither Skill
+gains an automatic dependency.

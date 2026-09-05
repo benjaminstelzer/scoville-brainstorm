@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.1.3 - 2026-09-05
+
+- Shortened the README, moved contributor layout notes to docs/maintenance.md, and made agent installation the primary path. Safety and evidence limits remain explicit.
+- Added separate prompts for this Skill and the complete live-verified Scoville suite.
+- Added targeted pre-freeze source recovery and an explicit stop on known material changes to the frozen frame.
+- Documented the package, documentation, test and frozen-benchmark layout. Removed generated caches from the working tree.
+- Separated observation labels from actual fixed constraints, preserving exact source IDs and unlabeled user constraints.
+- Completed native and Research-composed solo operation with one generation pass followed by one landscape pass and no isolation claim.
+- Included the repository license alongside existing third-party notices. New recovery cases are development definitions, not executed model qualification.
+
 ## 2026-08-19: Public validation wording (v1.1.2)
 
 ### Changed
