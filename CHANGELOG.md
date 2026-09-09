@@ -1,6 +1,9 @@
 # Changelog
 
-## Unreleased
+## v1.1.5 - 2026-09-09
+
+- Discover subagent closure by documented host semantics, preserve terminal results, and respect observable capacity when cleanup is unavailable.
+- Keep status questions inside the active run and report material blockers immediately.
 
 - Document host and tool requirements in the README compatibility block, matching the Skill frontmatter.
 
