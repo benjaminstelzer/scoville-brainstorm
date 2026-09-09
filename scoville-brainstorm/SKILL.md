@@ -1,6 +1,7 @@
 ---
 name: scoville-brainstorm
 description: Use only to explore materially different solution mechanisms before a choice, with isolated generation, bounded prior-art comparison, calibrated originality language, and a decision-ready shortlist. Activate for explicit Scoville Brainstorm, or when a task explicitly requests several materially different solution mechanisms, unusual alternatives, unknown-root hypotheses with falsifiers, fundamentally different directions, or separation of established approaches from directions worth pursuing. Never activate or load for an open question seeking one answer, a canonical answer, known-root fix, ordinary implementation or review, wording or naming work, one small reversible change, durable planning, or session transfer.
+compatibility: "Any Agent Skills host that can read references/. Isolated generators, a landscape agent and an independent critic need subagent spawning; without it the Skill uses its documented solo fallback. Web search improves the landscape pass. No scripts, no network service. Developed for Codex and Claude Code; other hosts untested."
 ---
 
 # Scoville Brainstorm
@@ -19,6 +20,16 @@ topology or isolation in coordinator text or the decision artifact. A host or
 evaluator may attach those facts only after inspecting calls and branch prompts.
 State known capability limits such as unavailable delegation without inventing
 branch counts. A solo fallback never claims isolated or independent work.
+
+Before RUN, check for spawn plus a host control whose documented semantics close
+a completed subagent thread and free its slot. `close_agent` is a canonical
+example, not a required command name. If no equivalent close control exists,
+report that limit before dispatch and treat every
+spawned target as consuming capacity after completion. Fit generators, the
+landscape lane, and any independent critic within observable capacity; skip an
+optional lane or use the documented solo fallback rather than raising the global
+limit. A limit change requires separate explicit authority. Completion is not
+closure, and interrupting, archiving, or killing a process is not a substitute.
 
 ## Dispatch
 
@@ -106,15 +117,23 @@ trust boundary.
    solo work, not isolated generation or independent criticism. Report that
    capacity limit without inventing agents or filling the profile branch count.
 6. **COLLECT:** Wait until every started branch is terminal. Keep raw outputs
-   separate and count the distinct surviving ideas. A failed branch is missing
+   separate, preserve each target and output provenance, and count the distinct surviving ideas. A failed branch is missing
    evidence, never permission to invent it. Accept exactly one applicable
    landscape result: native in standalone mode or Research-owned in combined
-   mode.
+   mode. After preserving a terminal branch result and any required resume handle,
+   close that branch when no explicit follow-up remains using the discovered
+   close control, then verify closure. Never close a target with a still-needed active
+   descendant. If closure is unavailable or fails, report the open target and
+   remaining capacity; do not create a recovery-agent chain. Interrupting,
+   archiving, deleting a task or killing a process is not equivalent unless the
+   host explicitly documents that exact control as freeing the subagent slot.
 7. **CONVERGE:** Normalize candidates to mechanism, constraints, evidence
    relationship, benefit, risk, and falsifier; merge paraphrases; reject broken
    constraints and unsupported facts; identify traps. Use the one collected
    landscape result as the sole landscape input. When available, use an
-   independent critic. Retain at most three distinct directions (Compact: two)
+   independent critic. Preserve its verdict and provenance, then apply the same
+   closure rule; if capacity cannot fit it, report that it was not independent
+   rather than inventing a critic or raising the limit. Retain at most three distinct directions (Compact: two)
    and deepen only those. Reject every direction breaking a `fixed_id` before
    `RENDER`.
 8. **RENDER:** Obey the user's exact schema, key order, language, and closed
@@ -137,6 +156,13 @@ trust boundary.
    Check required top-level fields once.
 9. **STOP:** Return the decision artifact. Do not select for the user, edit,
    install, run a falsifier, create a Plan or Decision, send, publish, or deploy.
+
+During RUN or COLLECT, answer a user status question inline and resume the active
+wait in the same main turn unless the user cancels or replaces the task. Report
+`BLOCKED` or `NEEDS_USER_DECISION` immediately with the cause, preserved results,
+stopped/open branch state, and next concrete step. Do not hide it as a routine
+update or promise notification after the main turn ends without an actual host
+mechanism.
 
 ## Evidence labels and transfer
 

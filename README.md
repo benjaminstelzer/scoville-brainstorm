@@ -167,6 +167,16 @@ needs:
 - [Handoff](https://github.com/benjaminstelzer/scoville-handoff) transfers active
   work to another agent or session.
 
+## Current Codex lifecycle limitation
+
+On 2026-09-09, the tested Codex Desktop tool surface exposed no control whose
+documented semantics close a completed subagent thread and free its slot. Other
+Codex hosts may expose an equivalent control under a different name. Brainstorm
+therefore discovers lifecycle controls by documented behavior, reports unavailable
+cleanup before isolated generation, and keeps generators, landscape work, and any
+critic within observable capacity. Interrupting, archiving, deleting a task, or
+killing a process is not assumed to free a subagent slot.
+
 ## Status
 
 The historical v1.1.0 candidate passed 6/6 open Validation cases. Its three-case

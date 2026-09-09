@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Added the `compatibility` frontmatter field declaring host and tool requirements. No behavior change.
+
 ## v1.1.4 - 2026-09-05
 
 - Move repository development into `development/` and keep the installable Skill in its own top-level directory.
