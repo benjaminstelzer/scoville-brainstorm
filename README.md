@@ -145,8 +145,7 @@ landscape only after collection, and then converges by mechanism. Outside that
 mode the native Brainstorm landscape remains unchanged. Research can require browsing, and parallel branches use additional context.
 The Skill installs no executable software or dedicated network service.
 
-For repository structure and development tools, see
-[maintenance notes](development/docs/maintenance.md).
+Repository validation and retention rules are in [development](development/README.md).
 
 ## Scoville family
 
@@ -183,20 +182,9 @@ killing a process is not assumed to free a subagent slot.
 
 ## Status
 
-The historical v1.1.0 candidate passed 6/6 open Validation cases. Its three-case
-holdout returned 1/3 raw and 3/3 adjudicated Skill results. The difference came
-from benchmark-contract defects, not retries or a repaired candidate.
-
-Focused Terra Medium cases on 2026-09-05 respected the factual constraints and
-explicit read limit. The solo answer offered distinct mechanisms, but its
-freeze and generation-to-landscape sequence were not fully observable and
-required output sections were missing. This is bounded evidence, not a new
-qualification of the current package.
-
-See the [qualification manifest](development/docs/evidence/w003-research-composition-qualification.json)
-and [benchmark evidence](development/docs/benchmark-evidence.md).
-
-Repository development and the current path mapping are in [development/](development/README.md).
+The package has deterministic routing and recovery cases. Historical model
+runs are summarized in the changelog but do not qualify the current package or
+establish a general ideation-performance claim.
 
 ## Sources
 
@@ -209,9 +197,6 @@ Repository development and the current path mapping are in [development/](develo
   separating candidate generation from evaluation and selection.
 - [Agent Skills specification](https://agentskills.io/specification) for the
   portable package contract.
-
-Research scope and pinned sources are listed in
-[the source map](development/docs/research/source-map.md).
 
 ## License
 
