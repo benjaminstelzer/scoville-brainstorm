@@ -46,8 +46,8 @@ trust boundary.
   implementation, or review.
 - `NO`: canonical or single answer; known root cause; selected implementation,
   review, wording, small reversible work, durable planning, or transfer. Return
-  the ordinary answer immediately. Run no tool and
-  read no task source or inert fixture.
+  control to the ordinary task owner. Run no Brainstorm workflow or
+  Brainstorm-directed tool/read; the authorized task may use its own tools.
 - `ASK`: broad exploration versus one answer materially changes cost and intent
   is unclear. Ask one question; read no task source.
 - `YES`: explicit brainstorming or several materially different, unusual, or
@@ -61,8 +61,9 @@ trust boundary.
 
 ## Machine
 
-1. **CORE:** The catalog/discovery read that exposed this body is activation and
-   the only Core read. Never read, stat, list, or inspect it again.
+1. **CORE:** Apply this workflow only after Dispatch selects `YES`. Discovery
+   or reading the Skill as an audit target does not activate it. Reuse the
+   loaded Core for this run; perform no redundant Core read, stat or listing.
 2. **READ:** Read only user-named task sources, one source per operation. Keep
    each result under its exact path and mark it complete, partial, or failed.
    Finish a truncated read through its missing range or continuation cursor.
