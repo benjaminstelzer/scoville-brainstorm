@@ -3,7 +3,6 @@
 ## v1.1.7 - 2026-09-11
 
 - Return control to the ordinary task after a negative activation decision. Reading the Core for an audit does not activate Brainstorm; reuse that read if a later decision activates it.
-- Behavioral acceptance remains deferred. This release adds no live-model or cross-host qualification.
 
 ## v1.1.5 - 2026-09-09
 

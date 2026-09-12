@@ -1,37 +1,22 @@
 # Scoville Brainstorm
 
-More ideas are easy. More genuinely different mechanisms are not.
+Three versions of the same idea do not give you three useful choices. A queue,
+an event queue and a queue with different arrows may still solve the problem
+in exactly the same way.
 
-It usually looks harmless:
+Scoville Brainstorm explores alternatives by how they work. It compares them
+against the fixed constraints and existing approaches, challenges their weak
+assumptions and returns a shortlist you can make a decision from. It stops
+before choosing or implementing a direction.
 
-- You ask for three different architectures and receive a queue, a queue with
-  events, and a queue whose arrows point the other way.
-- One direction ignores the fixed offline constraint but survives because it
-  is, admittedly, the exciting one.
-- A familiar pattern is presented as original after the prior-art search stops
-  precisely where recognition begins.
-- The eighth idea exists because eight ideas were requested. Its main mechanism
-  is being number eight.
-
-That is brainstorming slop: surface variety without causal variety. Plenty of
-ideas, very little new decision space.
-
-Scoville Brainstorm is a read-only Agent Skill for material architecture,
-product, workflow, research, and unknown-root choices. It explores causally
-different mechanisms, tests them against fixed constraints and bounded prior
-art, and returns a decision-ready shortlist. Then it stops. Selection,
-implementation, durable planning, and publication belong to the work that
-comes after brainstorming, however eager the brainstorm may be to get promoted.
-
-Do not use it for one canonical answer, a known-root fix, ordinary review or
-wording, or one small reversible change.
+Use it for architecture, product, workflow or research questions that need
+materially different approaches, including competing explanations for an unknown
+cause. A known fix, ordinary review or wording question does not need this process.
 
 ## Why "Scoville"?
 
 The family is named for useful signal that remains detectable after dilution.
-Brainstorming produces words easily. Its useful heat is the smaller set of
-distinct mechanisms that survives constraints, prior-art comparison, and
-criticism.
+Here, that signal is the difference between approaches after constraints and criticism have been applied.
 
 ## How to use
 
@@ -145,23 +130,18 @@ landscape only after collection, and then converges by mechanism. Outside that
 mode the native Brainstorm landscape remains unchanged. Research can require browsing, and parallel branches use additional context.
 The Skill installs no executable software or dedicated network service.
 
-Repository validation and retention rules are in [development](development/README.md).
-
 ## How it was developed
 
-I developed Brainstorm around the difference between several answers and
-several genuinely different mechanisms. Testing covered activation, isolated
-generation, delayed criticism and the point where exploration must stop.
-The [early evaluation history](https://github.com/benjaminstelzer/scoville-brainstorm/blob/1ca176c9a6ec85188a2cd50feebd579f35991247/CHANGELOG.md)
-also records a SkillOpt run whose proposed change was rejected and the
-existing instructions retained.
+I developed Brainstorm around a recurring problem: asking for different ideas
+often produces different descriptions of the same idea. The instructions keep
+generation separate from criticism and compare alternatives by how they work.
+That distinction matters more than the number of proposals.
 
-I continue using it in real tasks and analyzing complete histories for weak
-alternatives, unnecessary activation and tokens spent extending a search that
-already has enough useful directions. The [changelog](CHANGELOG.md) traces
-subsequent corrections to source recovery, task capacity and activation. Tests
-and optimization runs inform those revisions without making every new version
-a qualified ideation benchmark.
+I use it in real tasks and read the complete histories to see where alternatives
+collapse into one another, constraints get lost or the search continues after
+it has enough useful directions. I have also used SkillOpt to try instruction
+changes. An [early optimization run](https://github.com/benjaminstelzer/scoville-brainstorm/blob/1ca176c9a6ec85188a2cd50feebd579f35991247/CHANGELOG.md)
+did not produce a change worth keeping. The existing instructions stayed.
 
 ## Scoville family
 
@@ -195,12 +175,6 @@ therefore discovers lifecycle controls by documented behavior, reports unavailab
 cleanup before isolated generation, and keeps generators, landscape work, and any
 critic within observable capacity. Interrupting, archiving, deleting a task, or
 killing a process is not assumed to free a subagent slot.
-
-## Status
-
-The package has deterministic routing and recovery cases. Historical model
-runs are summarized in the changelog but do not qualify the current package or
-establish a general ideation-performance claim.
 
 ## Sources
 

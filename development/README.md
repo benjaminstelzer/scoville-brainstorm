@@ -8,4 +8,6 @@ Review routing, isolation, delayed evaluation, and explicit Research composition
 
 ## Retention
 
-Keep current regression inputs and this maintenance summary. Create benchmark corpora, prompts, model outputs, score packets, audits, and reviews in temporary storage. Retain evaluation evidence only as a concise repository-owned summary when a published release links it.
+Keep current regression inputs and this maintenance summary. Create benchmark corpora, prompts, model outputs, score packets, audits, and reviews in temporary storage. Retain a concise evaluation summary only when it explains a useful result or
+development lesson and a published release links it. Routine checks and
+inconclusive miniature runs stay temporary.
