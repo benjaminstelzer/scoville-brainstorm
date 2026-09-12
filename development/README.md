@@ -4,7 +4,7 @@ The only installable package is [`scoville-brainstorm/`](../scoville-brainstorm/
 
 ## Validate
 
-Check Skill frontmatter, UI metadata, package links, and the JSON syntax of `tests/recovery-cases.json`. Review routing, isolation, delayed evaluation, and explicit Research composition directly against the canonical Skill and references. Static checks do not establish model quality or general ideation performance.
+Review routing, isolation, delayed evaluation, and explicit Research composition directly against the canonical Skill and references. Static checks do not establish model quality or general ideation performance.
 
 ## Retention
 
