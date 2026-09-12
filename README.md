@@ -201,3 +201,19 @@ establish a general ideation-performance claim.
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+## How it was developed
+
+I developed Brainstorm around the difference between several answers and
+several genuinely different mechanisms. Testing covered activation, isolated
+generation, delayed criticism and the point where exploration must stop.
+The [early evaluation history](https://github.com/benjaminstelzer/scoville-brainstorm/blob/1ca176c9a6ec85188a2cd50feebd579f35991247/CHANGELOG.md)
+also records a SkillOpt run whose proposed change was rejected and the
+existing instructions retained.
+
+I continue using it in real tasks and analyzing complete histories for weak
+alternatives, unnecessary activation and tokens spent extending a search that
+already has enough useful directions. The [changelog](CHANGELOG.md) traces
+subsequent corrections to source recovery, task capacity and activation. Tests
+and optimization runs inform those revisions without making every new version
+a qualified ideation benchmark.
